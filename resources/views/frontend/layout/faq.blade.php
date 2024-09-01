@@ -4,15 +4,19 @@
 @section('title', 'Home')
 <!-- End:Title -->
 
-@section('style')
-
-@endsection
+@push('css')
+    <style>
+        .faq--area {
+            padding: 200px 0 106px;
+        }
+    </style>
+@endpush
 
 @section('content')
-    <!-- faq area start  -->
-    @include('frontend.partials.faq')
-    <!-- faq area end  -->
+        <!-- faq area start -->
+        @include('frontend.partials.faq')
+        <!-- faq area end  -->
 @endsection
 
-@push('script')
+@push('js')
 @endpush
