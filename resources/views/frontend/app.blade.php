@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    @include('frontend.partials.alert')
     <!-- start header  -->
     @include('frontend.partials.header')
     <!-- end header  -->
@@ -21,7 +22,6 @@
     <!-- start footer  -->
     @include('frontend.partials.footer')
     <!-- end footer  -->
-    @include('frontend.partials.alert')
     @include('frontend.partials.script')
     @stack('js')
 </body>
