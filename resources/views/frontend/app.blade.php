@@ -21,6 +21,7 @@
     <!-- start footer  -->
     @include('frontend.partials.footer')
     <!-- end footer  -->
+    @include('frontend.partials.alert')
     @include('frontend.partials.script')
     @stack('js')
 </body>
