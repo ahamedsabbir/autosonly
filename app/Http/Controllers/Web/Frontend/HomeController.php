@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $request->session()->put('alert-success', "Please Login First");
+        // return redirect()->route('home')->with('alert', 'Please Login First');	
         return view('frontend.layout.index');
     }
     public function faq()

@@ -15,14 +15,15 @@
                 <div class="col-lg-7 col-md-10">
                     <div class="login--form user--profile--form">
                         <h1>Log In</h1>
-                        <form class="form--common" action="#">
+                        <form class="form--common" method="POST" action="{{ route('login') }}">
+                            @csrf
                             <div class="input--group">
                                 <label for="email">Email Address</label>
-                                <input type="email" id="email" placeholder="eg. youremail@email.com">
+                                <input type="email" id="email" placeholder="eg. youremail@email.com" value="{{ old('email') }}" name="email">
                             </div>
                             <div class="input--group">
                                 <label for="password">Password</label>
-                                <input type="password" id="password" placeholder="**********">
+                                <input type="password" id="password" placeholder="**********" name="password">
                             </div>
                             <button type="submit" class="button">Log In</button>
                         </form>

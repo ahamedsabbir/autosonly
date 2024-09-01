@@ -15,7 +15,7 @@
                             <a href="{{route('home')}}" class="active">Home</a>
                         </li>
                         <li>
-                            <a href="listing.html">Car Listing</a>
+                            <a href="{{url('cars')}}">Car Listing</a>
                         </li>
                         <li>
                             <a href="{{route('about')}}">About Us</a>

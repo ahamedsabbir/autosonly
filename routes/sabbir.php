@@ -10,7 +10,7 @@ Route::get('about', [HomeController::class, 'about'])->name('about');
 
 
 Route::get('/car', function () {
-    return view('frontend.layout.car');
+    return view('frontend.layout.car');	
 });
 Route::get('/cars', function () {
     return view('frontend.layout.cars');

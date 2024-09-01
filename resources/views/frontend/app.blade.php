@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    @include('frontend.partials.alert')
     <!-- start header  -->
     @include('frontend.partials.header')
     <!-- end header  -->
