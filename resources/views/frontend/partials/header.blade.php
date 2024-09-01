@@ -4,7 +4,7 @@
             <div class="col-3">
                 <!-- logo  -->
                 <a href="index.html" class="logo">
-                    <img src="{{asset('frontend')}}/assets/images/logo.svg" alt="">
+                    <img src="{{ asset('frontend') }}/assets/images/logo.svg" alt="">
                 </a>
             </div>
             <div class="col-9">
@@ -35,7 +35,7 @@
                     <span class="line-top"></span>
                     <span class="line-center"></span>
                     <span class="line-bottom"></span>
-                    </div>
+                </div>
             </div>
         </div>
     </div>

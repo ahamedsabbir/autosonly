@@ -15,13 +15,7 @@
     @include('frontend.partials.header')
     <!-- end header  -->
     <main>
-        <!-- start hero area  -->
-        @include('frontend.partials.slider')
-        <!-- end hero area  -->
         @yield('content')
-        <!-- faq area start  -->
-        @include('frontend.partials.faq')
-         <!-- faq area end  -->
     </main>
     <!-- start footer  -->
     @include('frontend.partials.footer')

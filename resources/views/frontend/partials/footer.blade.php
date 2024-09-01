@@ -4,7 +4,7 @@
             <!-- footer--box  -->
             <div class="footer--box logo--box">
                 <a href="index.html">
-                    <img src="{{asset('frontend')}}/assets/images/logo.svg" alt="">
+                    <img src="{{ asset('frontend') }}/assets/images/logo.svg" alt="">
                 </a>
                 <p>Our goal is to provide a wide selection of quality cars that are budget friendly.</p>
             </div>
@@ -56,7 +56,7 @@
                     </li>
                     <li>
                         <p>
-                        Feel free! Ask us anything related to our service
+                            Feel free! Ask us anything related to our service
                         </p>
                     </li>
                 </ul>
