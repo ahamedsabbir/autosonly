@@ -1,5 +1,8 @@
-<section class="content">
-      <div class="container-fluid">
+@extends('backend.app')
+@section('title','Dashboard')
+@section('page_name','home')
+@section('content')
+
         <!-- Small boxes (Stat box) -->
         <div class="row">
           <div class="col-lg-3 col-6">
@@ -577,5 +580,5 @@
           <!-- right col -->
         </div>
         <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
-    </section>
+@endsection
+
