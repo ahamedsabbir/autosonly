@@ -1,7 +1,17 @@
 <?php
-Route::get('/home', function () {
-    return view('frontend.layout.index');
+use App\Http\Controllers\Web\Frontend\HomeController;
+
+
+
+Route::get('home', [HomeController::class, 'index'])->name('home');
+Route::get('faq', [HomeController::class, 'faq'])->name('faq');
+Route::get('about', [HomeController::class, 'about'])->name('about');
+
+
+
+Route::get('/car', function () {
+    return view('frontend.layout.car');
 });
-Route::get('/faq', function () {
-    return view('frontend.layout.faq');
+Route::get('/cars', function () {
+    return view('frontend.layout.cars');
 });

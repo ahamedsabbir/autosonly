@@ -8,6 +8,7 @@
     @php($setting = \App\Models\Setting::first())
     <title> @yield('title')</title>
     @include('frontend.partials.style')
+    @stack('css')
 </head>
 
 <body>
@@ -21,6 +22,7 @@
     @include('frontend.partials.footer')
     <!-- end footer  -->
     @include('frontend.partials.script')
+    @stack('js')
 </body>
 
 </html>
