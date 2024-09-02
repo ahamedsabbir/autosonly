@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    @php($setting = \App\Models\Setting::first())
     <title> @yield('title')</title>
+    <link rel="shortcut icon" href="" type="image/x-icon">
     @include('frontend.partials.style')
     @stack('css')
 </head>
