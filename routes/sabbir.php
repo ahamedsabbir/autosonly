@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\Backend\SettingController;
 use App\Http\Controllers\Web\Frontend\ContactController;
 use App\Http\Controllers\Web\Frontend\HomeController;
 
@@ -8,6 +9,11 @@ Route::get('faq', [HomeController::class, 'faq'])->name('faq');
 Route::get('about', [HomeController::class, 'about'])->name('about');
 
 Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');
+
+
+
+Route::get('/settings', [SettingController::class, 'index'])->name('settings');
+Route::put('/settings/update', [SettingController::class, 'update'])->name('settings.update');
 
 
 

@@ -1,7 +1,7 @@
 @extends('frontend.app')
 
 <!-- Start:Title -->
-@section('title', 'Home')
+@section('title', App\Helper\Settings::get()->title)
 <!-- End:Title -->
 
 @push('css')
