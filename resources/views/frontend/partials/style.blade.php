@@ -9,3 +9,6 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/assets/css/helper.css">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/assets/css/style.css">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/assets/css/responsive.css">
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+

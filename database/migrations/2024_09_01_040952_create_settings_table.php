@@ -13,11 +13,15 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->default('Account System');
-            $table->string('logo')->nullable();
             $table->string('favicon')->nullable();
-            $table->string('address')->default('26985 Brighton Lane, Lake Forest, CA 92630');
+            $table->string('logo')->nullable();
             $table->longText('description');
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('copyright')->nullable();
+            $table->string('currency')->nullable();
+            $table->string('language')->nullable();
+            $table->string('address')->default('26985 Brighton Lane, Lake Forest, CA 92630');
             $table->timestamps();
         });
     }

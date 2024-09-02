@@ -1,21 +1,33 @@
-@if ($message = Session::get('alert-success'))
-    <script>
-        alert("{{ $message }}");
-    </script>
-@elseif($message = Session::get('alert-error'))
-    <div class="alert alert-danger d-flex align-items-center alert-dismissible" role="alert">
-        <span class="lnr lnr-warning"></span>&nbsp;
-        <div>
-            {{ $message }}
-        </div>
-        <button type="button" class="btn-close" data-coreui-dismiss="alert" aria-label="Close"></button>
-    </div>
-@elseif($message = Session::get('alert-warning'))
-    <div class="alert alert-warning d-flex align-items-center alert-dismissible" role="alert">
-        <span class="lnr lnr-warning"></span>&nbsp;
-        <div>
-            {{ $message }}
-        </div>
-        <button type="button" class="btn-close" data-coreui-dismiss="alert" aria-label="Close"></button>
-    </div>
+@if($errors->any())
+{{$msg = ""}}
+@foreach($errors->all() as $error)
+{{$msg .= $error}}
+@endforeach
+<script>
+    alert("{{ $msg }}")
+</script>
+@endif
+
+
+@if(session('error'))
+<script>
+    Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "{{ session('error') }}"
+    });
+</script>
+@endif
+
+
+@if(session('success'))
+<script>
+    Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "{{ session('success') }}",
+        showConfirmButton: false,
+        timer: 1500
+    });
+</script>
 @endif

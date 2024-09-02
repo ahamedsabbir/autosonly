@@ -58,22 +58,23 @@
                 </div>
             </div>
             <div class="col-lg-6 mt_30">
-                <form class="form--common" action="#">
+                <form class="form--common" action="{{ route('contact.store') }}" method="POST">
+                    @csrf
                     <div class="input--group">
                         <label for="fname">Full name</label>
-                        <input type="text" id="fname" placeholder="Jone Dee">
+                        <input type="text" id="fname" placeholder="Jone Dee" name="name">
                     </div>
                     <div class="input--group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" placeholder="jrosstherealt@gmail.com">
+                        <input type="email" id="email" placeholder="jrosstherealt@gmail.com" name="email">
                     </div>
                     <div class="input--group">
                         <label for="phone">Phone Number</label>
-                        <input type="number" id="phone" placeholder="+04 652 23660">
+                        <input type="number" id="phone" placeholder="+04 652 23660" name="phone">
                     </div>
                     <div class="input--group">
                         <label for="message">Your Message</label>
-                        <textarea placeholder="Message"></textarea>
+                        <textarea placeholder="Message" id="message" name="message"></textarea>
                     </div>
                     <button type="submit" class="button">Submit Now</button>
                 </form>
