@@ -12,6 +12,7 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         Contact::create($request->all());
-        return redirect()->back()->with('success', 'Thanks for contacting us. We will get back to you soon.');
+        session()->flash('success', 'Data has been saved successfully!');
+        return redirect()->back();
     }
 }
