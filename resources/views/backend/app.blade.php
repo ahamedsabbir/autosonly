@@ -65,7 +65,7 @@
     <!-- end footer  -->
 
     @include('backend.partials.script')
-
+    
 </body>
 
 </html>
