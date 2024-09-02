@@ -55,7 +55,7 @@
 
 
         <!-- Control Sidebar -->
-        @include('backend.partials.left_sidebar')
+        @include('backend.partials.right_sidebar')
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
@@ -65,7 +65,7 @@
     <!-- end footer  -->
 
     @include('backend.partials.script')
-    
+    @stack('scripts_more')
 </body>
 
 </html>

@@ -33,6 +33,22 @@
 <script src="{{asset('backend')}}/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('backend')}}/dist/js/pages/dashboard.js"></script>
+<!-- Summernote -->
+<script src="{{asset('backend')}}/plugins/summernote/summernote-bs4.min.js"></script>
+
+<!-- Page specific script -->
+<script>
+  $(function () {
+    // Summernote
+    $('#summernote').summernote()
+
+    // CodeMirror
+    CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+      mode: "htmlmixed",
+      theme: "monokai"
+    });
+  })
+</script>
 
 <!-- -----------------------------------Only tables script--------------------  -->
  <!-- DataTables  & Plugins -->
