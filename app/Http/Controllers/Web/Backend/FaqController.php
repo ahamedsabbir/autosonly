@@ -13,7 +13,7 @@ class FaqController extends Controller
      */
     public function index()
     {
-        $faqs = Faq::all();
+        $faqs = Faq::orderBy("created_at","desc")->get();
         return view('backend.layout.faq.index', compact('faqs'));
     }
 
@@ -30,7 +30,8 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
-        $faq = Faq::create($request->all());
+        $request->offsetUnset('files');
+        Faq::create($request->all());
         return redirect()->route('faq.index');
     }
 
