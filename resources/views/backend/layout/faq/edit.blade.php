@@ -13,8 +13,9 @@
               <!-- /.card-header -->
               <!-- form start -->
             
-              <form id="quickForm" novalidate="novalidate" action="{{ route('faq.store') }}" method="PATCH">
+              <form id="quickForm" novalidate="novalidate" action="{{ route('faq.update',$data->id) }}" method="POST">
               @csrf
+              @method('PUT')
               <input type="text" name="" id="" hidden value="{{$data->id}}">
                 <div class="card-body">
                   <div class="form-group">

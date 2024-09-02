@@ -58,10 +58,8 @@ class FaqController extends Controller
     public function update(Request $request, string $id)
     {
         $input = $request->all();
-        dd($input);
-        // $orders = Faq::findOrFail($id)->update($input);
-
-        // return redirect()->route('faq.index');
+        Faq::findOrFail($id)->update($input);
+        return redirect()->route('faq.index');
     }
 
     /**
