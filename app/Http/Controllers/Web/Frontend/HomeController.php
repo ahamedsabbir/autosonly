@@ -9,9 +9,10 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        $request->session()->put('alert-success', "Please Login First");
-        // return redirect()->route('home')->with('alert', 'Please Login First');	
+        //$request->session()->put('success', "Please Login First");
+        //return redirect()->route('home')->with('alert', 'Please Login First');	
         return view('frontend.layout.index');
+        //return redirect()->back()->with('success', 'Operation successful!');
     }
     public function faq()
     {
