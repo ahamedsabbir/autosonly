@@ -4,49 +4,67 @@
 @section('content')
 
 <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header d-flex justify-content-between ">
-                <h3 class="card-title">DataTable with default features</h3>
-                <button type="submit" class="btn btn-primary float-right">Add New</button>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>Other browsers</td>
-                    <td>All others</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>U</td>
-                  </tr>
-                  </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
-                  </tr>
-                  </tfoot>
-                </table>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
+  <div class="col-12">
+    <div class="card">
+
+      <!-- card-header -->
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-2">
+            <h3 class="card-title">Car List</h3>
           </div>
-          <!-- /.col -->
+          <div class="col-md-2 offset-8 text-right">
+            <a href="{{ route('caradd') }}" class="btn btn-warning">Add New</a>
+          </div>
         </div>
-        <!-- /.row -->
+      </div>
+      <!-- /.card-header -->
+
+      <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+          <thead>
+            <!-- table header show table row-heading -->
+            <tr>
+              <th>SL</th>
+              <th>Name</th>
+              <th>Make</th>
+              <th>Model</th>
+              <th>Make</th>
+              <th>Year</th>
+              <th>License Plate</th>
+              <th>Rental Price Per Day</th>
+              <th>Image</th>
+              <th>Available</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- ----------------------------------table data fetching---------------------------------- -->
+            
+          </tbody>
+          <tfoot>
+            <!-- table footer show table row-heading -->
+            <tr>
+            <th>SL</th>
+              <th>Name</th>
+              <th>Make</th>
+              <th>Model</th>
+              <th>Make</th>
+              <th>Year</th>
+              <th>License Plate</th>
+              <th>Rental Price Per Day</th>
+              <th>Image</th>
+              <th>Available</th>
+              <th>Status</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+  </div>
+  <!-- /.col -->
+</div>
+<!-- /.row -->
 @endsection

@@ -19,6 +19,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
+        
         return view('frontend.layout.register');
     }
 
@@ -45,6 +46,18 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        //start sabbir role for dashboard
+        $role = Auth::user()->role;
+
+        if($role == 'admin'){
+            return redirect()->intended(route('dashboard', absolute: false));
+        }
+
+        if($role == 'user'){
+            return redirect()->intended(route('profile.index', absolute: false));
+        }
+        //end sabbir role for dashboard
+
+        return redirect(route('home', absolute: false));
     }
 }
