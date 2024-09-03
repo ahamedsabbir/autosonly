@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Web\Backend;
 
+use App\Helper\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
+use Flasher\Prime\FlasherInterface;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller
@@ -16,7 +18,7 @@ class SettingController extends Controller
         $settings = Setting::latest('id')->first();
         return view('backend.layout.settings', compact('settings'));
     }
-    public function update(Request $request, Setting $setting)
+    public function update(Request $request, Setting $setting, FlasherInterface $flasher)
     {
         $setting = Setting::latest('id')->first();
 
@@ -24,10 +26,37 @@ class SettingController extends Controller
         if ($setting == null) {
             $setting = new Setting();
         }
+        //site settings
+        if(!empty($request->title)){
+            $setting->title = $request->title;
+        }
 
-        $setting->title = $request->title;
-        $setting->description = $request->description;
-        $setting->address = $request->address;
+        if(!empty($request->description)){
+            $setting->description = $request->description;
+        }
+
+        if(!empty($request->keywords)){
+            $setting->keywords = $request->keywords;
+        }
+
+        if(!empty($request->author)){
+            $setting->author = $request->author;
+        }
+        //personel settings
+        if(!empty($request->email)){
+            $setting->email = $request->email;
+        }
+        if(!empty($request->phone)){
+            $setting->phone = $request->phone;
+        }
+        if(!empty($request->address)){
+            $setting->address = $request->address;
+        }
+
+        //other settings
+        if(!empty($request->copyright)){
+            $setting->copyright = $request->copyright;
+        }
 
         // Upload Logo
         if (!empty($request['logo'])) {
@@ -60,7 +89,10 @@ class SettingController extends Controller
         }
 
         $setting->save();
-
+        $flasher->options([
+            'timeout' => 3000,
+            'position' => 'bottom-right',
+        ])->success('Your account has been re-activated.');
         return redirect()->route('settings')->with('t-success', 'Update successfully.');
     }
 }
