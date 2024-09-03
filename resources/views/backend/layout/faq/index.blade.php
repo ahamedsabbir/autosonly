@@ -14,7 +14,7 @@
             <h3 class="card-title">Faq List</h3>
           </div>
           <div class="col-md-2 offset-8 text-right">
-            <a href="{{ route('faq.create') }}" class="btn btn-warning">Add New</a>
+            <a href="{{ route('faq.create') }}" class="btn btn-primary">Add New</a>
           </div>
         </div>
       </div>
@@ -45,15 +45,15 @@
           <td>
           <div class="row mt-2">
             <!-- edit action -->
-            <a class="ml-3" href="{{ route('faq.edit', $data->id) }}"><i class="fas fa-edit fa-fw"></i></a>
+            <a class="ml-3" href="{{ route('faq.edit', $data->id) }}"><i class="fas fa-edit fa-fw text-primary"></i></a>
             <!-- show action -->
-            <a class="ml-3" href="{{ route('faq.show', $data->id) }}"><i class="fas fa-eye fa-fw"></i></a>
+            <a class="ml-3" href="{{ route('faq.show', $data->id) }}"><i class="fas fa-eye fa-fw text-warning"></i></a>
             <!-- delete action by form -->
             <form action="{{ route('faq.destroy', $data->id) }}" method="POST">
             @csrf
             @method('DELETE')
-            <button type="submit" class="ml-3 bg-danger"
-              onclick="return confirm('Are You Confirm to Delete')"><i class="fas fa-trash fa-fw"></i>
+            <button type="submit" class="ml-3 border-0 bg-transparent no-outline"
+              onclick="return confirm('Are You Confirm to Delete')"><i class="fas fa-trash fa-fw text-danger"></i>
             </button>
             </form>
           </div>
