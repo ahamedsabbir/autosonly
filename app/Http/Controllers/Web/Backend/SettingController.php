@@ -20,6 +20,11 @@ class SettingController extends Controller
     }
     public function update(Request $request, Setting $setting, FlasherInterface $flasher)
     {
+        $request->validate([
+            'logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'favicon' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
         $setting = Setting::latest('id')->first();
 
         // Check Exit Of Setting
@@ -89,10 +94,12 @@ class SettingController extends Controller
         }
 
         $setting->save();
+        
         $flasher->options([
             'timeout' => 3000,
-            'position' => 'bottom-right',
+            'position' => 'top-right',
         ])->success('Your account has been re-activated.');
+
         return redirect()->route('settings')->with('t-success', 'Update successfully.');
     }
 }
