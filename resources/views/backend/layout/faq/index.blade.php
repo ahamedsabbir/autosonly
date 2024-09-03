@@ -6,17 +6,20 @@
 <div class="row">
   <div class="col-12">
     <div class="card">
+
+      <!-- card-header -->
       <div class="card-header">
         <div class="row">
-                            <div class="col-md-2">
-                                <h3 class="card-title">Faq List</h3>
-                            </div>
-                            <div class="col-md-2 offset-8 text-right">
-                                <a href="{{ route('faq.create') }}" class="btn btn-warning">Add New</a>
-                            </div>
-                        </div>
+          <div class="col-md-2">
+            <h3 class="card-title">Faq List</h3>
+          </div>
+          <div class="col-md-2 offset-8 text-right">
+            <a href="{{ route('faq.create') }}" class="btn btn-warning">Add New</a>
+          </div>
+        </div>
       </div>
       <!-- /.card-header -->
+
       <div class="card-body">
         <table id="example1" class="table table-bordered table-striped">
           <thead>
@@ -33,7 +36,7 @@
             @forelse ($faqs as $data)
         <tr>
           <td>{{ $loop->iteration }}</td>
-            <!-- raw code for Description lenth fixed -->
+          <!-- raw code for Description lenth fixed -->
           <td>{{ strlen($data->title) <= 10 ? $data->title : substr($data->title, 0, 50)  }}</td>
           <td>
           {{ strlen($data->description) <= 10 ? $data->description : substr($data->description, 0, 20) . '...' }}
