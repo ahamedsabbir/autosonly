@@ -48,8 +48,8 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="" class="nav-link @if (request()->routeIs('setting')) active @endif">
+          <li class="nav-item @if (request()->routeIs('setting')) menu-is-opening menu-open @endif">
+            <a href="" class="nav-link @if (request()->routeIs('setting')) active  @endif">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Setting

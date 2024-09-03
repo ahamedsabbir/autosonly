@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Web\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Faq;
 use Illuminate\Http\Request;
+use Exception;
+use Flasher\Prime\FlasherInterface;
+
 
 class FaqController extends Controller
 {
@@ -13,7 +16,7 @@ class FaqController extends Controller
      */
     public function index()
     {
-        $faqs = Faq::orderBy("created_at","desc")->get();
+        $faqs = Faq::orderBy("created_at", "desc")->get();
         return view('backend.layout.faq.index', compact('faqs'));
     }
 
@@ -30,9 +33,41 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
-        $request->offsetUnset('files');
-        Faq::create($request->all());
-        return redirect()->route('faq.index');
+        // Validate the incoming request data
+        $request->validate($request->all(), [
+            'title' => 'required|string',
+            'description' => 'required|string',
+        ]);
+
+        try {
+            // Remove the 'files' key from the request data
+            $request->offsetUnset('files');
+
+            // Sanitize the description field by removing HTML tags
+            $htmlContent = $request->input('description');
+            $plainText = strip_tags($htmlContent);
+
+            // Merge the sanitized description back into the request data
+            $request->merge(['description' => $plainText]);
+
+            // Create a new FAQ entry with the sanitized data
+            Faq::create($request->all());
+
+            // Flash a success message with options
+            flash()
+                ->options([
+                    'timeout' => 3000, // 3 seconds
+                    'position' => 'bottom-right',
+                ])
+                ->success('Faq Data Added.');
+
+            // Redirect to the FAQ index page with a success message
+            return redirect(route('faq.index'))->with('t-success', 'Faq added successfully.');
+        } catch (Exception $e) {
+            // If an error occurs, redirect back with an error message
+            return back()->with('t-error', 'Failed to added Faq');
+        }
+
     }
 
     /**
@@ -50,7 +85,7 @@ class FaqController extends Controller
     public function edit(string $id)
     {
         $data = Faq::find($id);
-        return view('backend.layout.faq.edit',compact('data'));
+        return view('backend.layout.faq.update', compact('data'));
     }
 
     /**
@@ -58,9 +93,35 @@ class FaqController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $input = $request->all();
-        Faq::findOrFail($id)->update($input);
-        return redirect()->route('faq.index');
+// Validate the incoming request data
+$request->validate($request->all(), [
+    'title' => 'required|string',
+    'description' => 'required|string',
+]);
+
+try {
+    // Remove the 'files' key from the request data
+    $request->offsetUnset('files');
+    
+    // Sanitize the description field by removing HTML tags
+    $htmlContent = $request->input('description');
+    $plainText = strip_tags($htmlContent);
+    
+    // Merge the sanitized description back into the request data
+    $request->merge(['description' => $plainText]);
+    Faq::findOrFail($id)->update($request->all());
+
+    flash()
+        ->options([
+            'timeout' => 3000, // 3 seconds
+            'position' => 'bottom-right',
+        ])
+        ->success('Faq Data Update.');
+    return redirect(route('faq.index'))->with('t-success', 'Faq Update successfully.');
+} catch (Exception $e) {
+    return back()->with('t-error', 'Failed to Update Faq');
+}
+
     }
 
     /**
