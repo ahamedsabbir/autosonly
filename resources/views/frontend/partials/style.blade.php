@@ -9,6 +9,11 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/assets/css/helper.css">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/assets/css/style.css">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/assets/css/responsive.css">
+<style>
+    #flasher-container-top-right {
+        z-index: 9999999 !important;
+    }
+</style>
 
 
 

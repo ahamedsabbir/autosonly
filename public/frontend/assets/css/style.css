@@ -156,7 +156,7 @@ header {
   left: 0;
   width: 100%;
   background-color: transparent;
-  z-index: 1035;
+  z-index: 9;
   -webkit-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;

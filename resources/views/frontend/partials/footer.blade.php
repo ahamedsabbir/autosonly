@@ -52,7 +52,7 @@
                 <h4>Any Questions?</h4>
                 <ul>
                     <li>
-                        <a href="mailto:youremail@gmail.com">youremail@gmail.com</a>
+                        <a href="mailto:@php App\Helper\Settings::get()->email @endphp">@php App\Helper\Settings::get()->email @endphp</a>
                     </li>
                     <li>
                         <p>
