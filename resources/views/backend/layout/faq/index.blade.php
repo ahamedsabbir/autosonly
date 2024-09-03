@@ -6,10 +6,15 @@
 <div class="row">
   <div class="col-12">
     <div class="card">
-      <div class="card-header d-flex justify-content-between ">
-        <h3 class="card-title">FAQ DataTable</h3>
-        <a href="{{ route('faq.create') }}" class="btn btn-primary text-left">Add New</a>
-        <!-- <button type="submit" class="btn btn-primary float-right">Add New</button> -->
+      <div class="card-header">
+        <div class="row">
+                            <div class="col-md-2">
+                                <h3 class="card-title">Faq List</h3>
+                            </div>
+                            <div class="col-md-2 offset-8 text-right">
+                                <a href="{{ route('faq.create') }}" class="btn btn-warning">Add New</a>
+                            </div>
+                        </div>
       </div>
       <!-- /.card-header -->
       <div class="card-body">

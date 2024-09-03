@@ -48,6 +48,12 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+                <a href="{{route('faq.index')}}" class="nav-link @if (request()->routeIs('faq.index')) active @endif">
+                <i class="nav-icon fas fa-copy"></i>
+                  <p>FAQ</p>
+                </a>
+              </li>
           <li class="nav-item @if (request()->routeIs('setting')) menu-is-opening menu-open @endif">
             <a href="" class="nav-link @if (request()->routeIs('setting')) active  @endif">
               <i class="nav-icon fas fa-copy"></i>
@@ -58,9 +64,15 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('faq.index')}}" class="nav-link @if (request()->routeIs('faq.index')) active @endif">
+                <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>FAQ</p>
+                  <p>App settings</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Dynamic Page</p>
                 </a>
               </li>
             </ul>

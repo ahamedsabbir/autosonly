@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Faq;
 use Illuminate\Http\Request;
 use Exception;
-use Flasher\Prime\FlasherInterface;
+use Illuminate\Support\Facades\Validator;
 
 
 class FaqController extends Controller
@@ -33,12 +33,14 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate the incoming request data
-        $request->validate($request->all(), [
+        $validator = Validator::make($request->all(), [
             'title' => 'required|string',
             'description' => 'required|string',
         ]);
 
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
         try {
             // Remove the 'files' key from the request data
             $request->offsetUnset('files');
@@ -93,34 +95,36 @@ class FaqController extends Controller
      */
     public function update(Request $request, string $id)
     {
-// Validate the incoming request data
-$request->validate($request->all(), [
-    'title' => 'required|string',
-    'description' => 'required|string',
-]);
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|string',
+            'description' => 'required|string',
+        ]);
 
-try {
-    // Remove the 'files' key from the request data
-    $request->offsetUnset('files');
-    
-    // Sanitize the description field by removing HTML tags
-    $htmlContent = $request->input('description');
-    $plainText = strip_tags($htmlContent);
-    
-    // Merge the sanitized description back into the request data
-    $request->merge(['description' => $plainText]);
-    Faq::findOrFail($id)->update($request->all());
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+        try {
+            // Remove the 'files' key from the request data
+            $request->offsetUnset('files');
 
-    flash()
-        ->options([
-            'timeout' => 3000, // 3 seconds
-            'position' => 'bottom-right',
-        ])
-        ->success('Faq Data Update.');
-    return redirect(route('faq.index'))->with('t-success', 'Faq Update successfully.');
-} catch (Exception $e) {
-    return back()->with('t-error', 'Failed to Update Faq');
-}
+            // Sanitize the description field by removing HTML tags
+            $htmlContent = $request->input('description');
+            $plainText = strip_tags($htmlContent);
+
+            // Merge the sanitized description back into the request data
+            $request->merge(['description' => $plainText]);
+            Faq::findOrFail($id)->update($request->all());
+
+            flash()
+                ->options([
+                    'timeout' => 3000, // 3 seconds
+                    'position' => 'bottom-right',
+                ])
+                ->success('Faq Data Update.');
+            return redirect(route('faq.index'))->with('t-success', 'Faq Update successfully.');
+        } catch (Exception $e) {
+            return back()->with('t-error', 'Failed to Update Faq');
+        }
 
     }
 
@@ -130,6 +134,12 @@ try {
     public function destroy(string $id)
     {
         Faq::find($id)->delete();
+        flash()
+                ->options([
+                    'timeout' => 3000, // 3 seconds
+                    'position' => 'bottom-right',
+                ])
+                ->success('Faq Data Delete Success.');
         return redirect()->route('faq.index');
     }
 }
