@@ -21,7 +21,11 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleInputDescription1">Description</label>
-                    <input type="text" name="description" class="form-control" id="exampleInputDescription1" placeholder=" Enter Description">
+                    
+              <textarea id="summernote" name="description" class="form-control" placeholder="Enter some description">
+                
+              </textarea>
+              
                   </div>
                 </div>
                 <!-- /.card-body -->

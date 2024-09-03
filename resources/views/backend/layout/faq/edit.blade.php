@@ -13,8 +13,9 @@
               <!-- /.card-header -->
               <!-- form start -->
             
-              <form id="quickForm" novalidate="novalidate" action="{{ route('faq.store') }}" method="PATCH">
+              <form id="quickForm" novalidate="novalidate" action="{{ route('faq.update',$data->id) }}" method="POST">
               @csrf
+              @method('PUT')
               <input type="text" name="" id="" hidden value="{{$data->id}}">
                 <div class="card-body">
                   <div class="form-group">
@@ -23,7 +24,7 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleInputDescription1">Description</label>
-                    <input type="text" name="description" class="form-control" id="exampleInputDescription1" value="{{$data->description}}">
+                    <textarea name="description" class="form-control" id="exampleInputDescription1" value="{{$data->description}}"></textarea>
                   </div>
                 </div>
                 <!-- /.card-body -->

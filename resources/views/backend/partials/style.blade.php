@@ -21,6 +21,13 @@
     <link rel="stylesheet" href="{{asset('backend')}}/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="{{asset('backend')}}/plugins/summernote/summernote-bs4.min.css">
+    <!-- summernote -->
+  <link rel="stylesheet" href="{{asset('backend')}}/plugins/summernote/summernote-bs4.min.css">
+  <!-- CodeMirror -->
+  <link rel="stylesheet" href="{{asset('backend')}}/plugins/codemirror/codemirror.css">
+  <link rel="stylesheet" href="{{asset('backend')}}/plugins/codemirror/theme/monokai.css">
+  <!-- SimpleMDE -->
+  <link rel="stylesheet" href="{{asset('backend')}}/plugins/simplemde/simplemde.min.css">
 
 <!-- ------------------------------Only tables style-------------------------------------  -->
   <!-- DataTables -->
@@ -28,5 +35,7 @@
   <link rel="stylesheet" href="{{asset('backend')}}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="{{asset('backend')}}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 <!-- ------------------------------Only tables style-------------------------------------  -->
+
+
 @stack('style_more')
 
