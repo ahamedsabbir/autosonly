@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Page;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -21,5 +22,15 @@ class HomeController extends Controller
     public function about()
     {
         return view('frontend.layout.about');
+    }
+    public function dynamicPages($id)
+    {
+        $page = Page::where('id', $id)->first();
+        if (!$page) {
+            abort(404);
+        }
+        return view('frontend.layout.page', [
+            'page' => $page
+        ]);
     }
 }

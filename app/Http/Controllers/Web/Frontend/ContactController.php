@@ -12,11 +12,20 @@ class ContactController extends Controller
 {
     public function store(Request $request, FlasherInterface $flasher)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'numeric|min:10',
+            'message' => 'required',
+        ]);
+
         Contact::create($request->all());
+        
         $flasher->options([
             'timeout' => 3000,
             'position' => 'top-right',
         ])->success('Your account has been re-activated.');
+
         return redirect()->back();
     }
 }
