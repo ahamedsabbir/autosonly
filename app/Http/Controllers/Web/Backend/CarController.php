@@ -24,7 +24,7 @@ class CarController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.layout.car.add');
     }
 
     /**
@@ -32,38 +32,39 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:100',
-            'make' => 'required|string|max:100',
-            'model' => 'required|string|max:100',
-            'year' => 'required|date',
-            'license_plate' => 'required|string|max:255|unique:cars',
-            'rental_price_per_day' => 'required|numeric',
-            'available' => 'required|in:yes,no',
-            'status' => 'required|in:repair,ok',
-        ]);
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
-        }
-        try {
+        dd($request->all());
+        // $validator = Validator::make($request->all(), [
+        //     'name' => 'required|string|max:100',
+        //     'make' => 'required|string|max:100',
+        //     'model' => 'required|string|max:100',
+        //     'year' => 'required|date',
+        //     'license_plate' => 'required|string|max:255|unique:cars',
+        //     'rental_price_per_day' => 'required|numeric',
+        //     'available' => 'required|in:yes,no',
+        //     'status' => 'required|in:repair,ok',
+        // ]);
+        // if ($validator->fails()) {
+        //     return back()->withErrors($validator)->withInput();
+        // }
+        // try {
             
-            // Create a new FAQ entry with the sanitized data
-            Car::create($request->all());
+        //     // Create a new FAQ entry with the sanitized data
+        //     Car::create($request->all());
 
-            // Flash a success message with options
-            flash()
-                ->options([
-                    'timeout' => 3000, // 3 seconds
-                    'position' => 'bottom-right',
-                ])
-                ->success('Car Data Added.');
+        //     // Flash a success message with options
+        //     flash()
+        //         ->options([
+        //             'timeout' => 3000, // 3 seconds
+        //             'position' => 'bottom-right',
+        //         ])
+        //         ->success('Car Data Added.');
 
-            // Redirect to the Car index page with a success message
-            return redirect(route('car.index'))->with('t-success', 'Car added successfully.');
-        } catch (Exception $e) {
-            // If an error occurs, redirect back with an error message
-            return back()->with('t-error', 'Failed to added Car');
-        }
+        //     // Redirect to the Car index page with a success message
+        //     return redirect(route('car.index'))->with('t-success', 'Car added successfully.');
+        // } catch (Exception $e) {
+        //     // If an error occurs, redirect back with an error message
+        //     return back()->with('t-error', 'Failed to added Car');
+        // }
     }
 
     /**

@@ -6,17 +6,20 @@
 <div class="row">
   <div class="col-12">
     <div class="card">
+
+      <!-- card-header -->
       <div class="card-header">
         <div class="row">
-                            <div class="col-md-2">
-                                <h3 class="card-title">Faq List</h3>
-                            </div>
-                            <div class="col-md-2 offset-8 text-right">
-                                <a href="{{ route('faq.create') }}" class="btn btn-warning">Add New</a>
-                            </div>
-                        </div>
+          <div class="col-md-2">
+            <h3 class="card-title">Faq List</h3>
+          </div>
+          <div class="col-md-2 offset-8 text-right">
+            <a href="{{ route('faq.create') }}" class="btn btn-primary">Add New</a>
+          </div>
+        </div>
       </div>
       <!-- /.card-header -->
+
       <div class="card-body">
         <table id="example1" class="table table-bordered table-striped">
           <thead>
@@ -33,7 +36,7 @@
             @forelse ($faqs as $data)
         <tr>
           <td>{{ $loop->iteration }}</td>
-            <!-- raw code for Description lenth fixed -->
+          <!-- raw code for Description lenth fixed -->
           <td>{{ strlen($data->title) <= 10 ? $data->title : substr($data->title, 0, 50)  }}</td>
           <td>
           {{ strlen($data->description) <= 10 ? $data->description : substr($data->description, 0, 20) . '...' }}
@@ -42,15 +45,15 @@
           <td>
           <div class="row mt-2">
             <!-- edit action -->
-            <a class="ml-3" href="{{ route('faq.edit', $data->id) }}"><i class="fas fa-edit fa-fw"></i></a>
+            <a class="ml-3" href="{{ route('faq.edit', $data->id) }}"><i class="fas fa-edit fa-fw text-primary"></i></a>
             <!-- show action -->
-            <a class="ml-3" href="{{ route('faq.show', $data->id) }}"><i class="fas fa-eye fa-fw"></i></a>
+            <a class="ml-3" href="{{ route('faq.show', $data->id) }}"><i class="fas fa-eye fa-fw text-warning"></i></a>
             <!-- delete action by form -->
             <form action="{{ route('faq.destroy', $data->id) }}" method="POST">
             @csrf
             @method('DELETE')
-            <button type="submit" class="ml-3 bg-danger"
-              onclick="return confirm('Are You Confirm to Delete')"><i class="fas fa-trash fa-fw"></i>
+            <button type="submit" class="ml-3 border-0 bg-transparent no-outline"
+              onclick="return confirm('Are You Confirm to Delete')"><i class="fas fa-trash fa-fw text-danger"></i>
             </button>
             </form>
           </div>
