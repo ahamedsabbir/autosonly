@@ -2,6 +2,11 @@
 @section('title', 'Settings')
 @section('page_name', 'Settings')
 @section('content')
+<style>
+.fl-wrapper {
+    z-index: 9999999 !imortant;
+}
+</style>
     <div class="row">
 
         <div class="col-md-6">
@@ -58,7 +63,7 @@
                         <div class="row text-center">
                             <div class="col-md-6">
                                 <label for="exampleInputFavicon1" class="text-center">
-                                    <p>Favicon</p>
+                                    <p>Favicon @error('favicon') <span class="text-danger">{{ $message }}</span> @enderror</p>
                                     <img src="{{ asset($settings->favicon) }}" alt="Favicon" width="200px" height="200px">
                                 </label>
                                 <input type="file" class="form-control d-none" id="exampleInputFavicon1" name="favicon"
@@ -66,7 +71,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="exampleInputLogo1" class="text-center">
-                                    <p>Logo</p>
+                                    <p>Logo @error('logo') <span class="text-danger">{{ $message }}</span> @enderror</p>
                                     <img src="{{ asset($settings->logo) }}" alt="Logo" width="200px" height="200px">
                                 </label>
                                 <input type="file" class="form-control d-none" id="exampleInputLogo1" name="logo"
