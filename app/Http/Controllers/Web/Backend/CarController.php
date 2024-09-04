@@ -88,10 +88,10 @@ class CarController extends Controller
                 ->success('Car Data Added.');
 
             // Redirect to the Car index page with a success message
-            return redirect(route('admin-cars.index'))->with('t-success', 'Car added successfully.');
+           return redirect(route('admin-cars.index'));
         } catch (Exception $e) {
             // If an error occurs, redirect back with an error message
-            return back()->with('t-error', 'Failed to added Car');
+            return back();
         }
     }
 
@@ -148,17 +148,12 @@ class CarController extends Controller
             ]);
 
             // Flash a success message with options
-            flash()
-                ->options([
-                    'timeout' => 3000, // 3 seconds
-                    'position' => 'bottom-right',
-                ])
-                ->success('Car Data Updated.');
+            flash()->success('Car Data Updated.');
 
             // Redirect to the Car index page with a success message
-            return redirect(route('admin-cars.index'))->with('t-success', 'Car updated successfully.');
+            return redirect(route('admin-cars.index'));
         } catch (Exception $e) {
-            return back()->with('t-error', 'Failed to update Car');
+            return back();
         }
     }
 
@@ -169,12 +164,7 @@ class CarController extends Controller
     public function destroy(string $id)
     {
         Car::findOrFail($id)->delete();
-        flash()
-            ->options([
-                'timeout' => 3000, // 3 seconds
-                'position' => 'bottom-right',
-            ])
-            ->success('Car Data Delete Success.');
+        flash()->success('Car Data Delete Success.');
         return redirect()->route('admin-cars.index');
     }
 }

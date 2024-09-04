@@ -41,7 +41,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('car')}}" class="nav-link @if (request()->routeIs('car')) active @endif">
+            <a href="{{route('admin-cars.index')}}" class="nav-link @if (request()->routeIs('admin-cars.*')) active @endif">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Car
@@ -49,7 +49,7 @@
             </a>
           </li>
           <li class="nav-item">
-                <a href="{{route('faq.index')}}" class="nav-link @if (request()->routeIs('faq.index')) active @endif">
+                <a href="{{route('admin-faq.index')}}" class="nav-link @if (request()->routeIs('admin-faq.*')) active @endif">
                 <i class="nav-icon fas fa-copy"></i>
                   <p>FAQ</p>
                 </a>

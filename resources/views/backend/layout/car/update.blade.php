@@ -13,7 +13,7 @@
             <h3 class="card-title">Car Add Form</h3>
           </div>
           <div class="col-md-2 offset-8 text-right">
-            <a href="{{ route('car') }}" class="btn btn-dark">Back</a>
+            <a href="{{ route('admin-cars.index') }}" class="btn btn-dark">Back</a>
           </div>
         </div>
       </div>

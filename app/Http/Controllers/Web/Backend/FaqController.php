@@ -65,10 +65,10 @@ class FaqController extends Controller
                 ->success('Faq Data Added.');
 
             // Redirect to the FAQ index page with a success message
-            return redirect(route('admin-faq.index'))->with('t-success', 'Faq added successfully.');
+            return redirect(route('admin-faq.index'));
         } catch (Exception $e) {
             // If an error occurs, redirect back with an error message
-            return back()->with('t-error', 'Failed to added Faq');
+            return back();
         }
 
     }
@@ -122,9 +122,9 @@ class FaqController extends Controller
                     'position' => 'bottom-right',
                 ])
                 ->success('Faq Data Update.');
-            return redirect(route('admin-faq.index'))->with('t-success', 'Faq Update successfully.');
+            return redirect(route('admin-faq.index'));
         } catch (Exception $e) {
-            return back()->with('t-error', 'Failed to Update Faq');
+            return back();
         }
 
     }
