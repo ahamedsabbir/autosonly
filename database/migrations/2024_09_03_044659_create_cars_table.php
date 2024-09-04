@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name', 100);
             $table->string('make', 100);
             $table->string('model', 100);
-            $table->dateTime('year');
+            $table->string('year');
             $table->string('license_plate', 255)->unique();
             $table->decimal('rental_price_per_day', 10, 2);
             $table->enum('available', ['yes', 'no'])->default('yes');
