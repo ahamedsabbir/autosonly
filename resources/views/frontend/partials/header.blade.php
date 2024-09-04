@@ -17,27 +17,34 @@
                         <li>
                             <a href="{{ url('cars') }}">Car Listing</a>
                         </li>
+                        @if (App\Models\Page::count() > 0)
+                            @foreach (App\Models\Page::all() as $page)
+                                <li>
+                                    <a href="{{ route('page', $page->id) }}" class="@if (request()->routeIs('page')) active @endif">{{ $page->name }}</a>
+                                </li>
+                            @endforeach
+                        @endif
                         <li>
                             <a href="{{ route('about') }}">About Us</a>
                         </li>
                         <li>
-                            <a href="{{ route('faq') }}"  class="@if (request()->routeIs('faq')) active @endif">FAQs</a>
+                            <a href="{{ route('faq') }}" class="@if (request()->routeIs('faq')) active @endif">FAQs</a>
                         </li>
                     </ul>
                     <!-- button area  -->
                     @auth
-                        <div class="btn--area d-flex align-items-center gap-3">
-                            <form action="{{ route('logout') }}" method="POST">
-                                @csrf
-                                <button class="button" type="submit">Log Out</button>
-                            </form>
-                            <a href="{{ route('profile.edit') }}" class="buttonv2">Profile</a>
-                        </div>
+                    <div class="btn--area d-flex align-items-center gap-3">
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button class="button" type="submit">Log Out</button>
+                        </form>
+                        <a href="{{ route('profile.edit') }}" class="buttonv2">Profile</a>
+                    </div>
                     @else
-                        <div class="btn--area d-flex align-items-center gap-3">
-                            <a href="{{ route('login') }}" class="button">Log In</a>
-                            <a href="{{ route('register') }}" class="buttonv2">Register</a>
-                        </div>
+                    <div class="btn--area d-flex align-items-center gap-3">
+                        <a href="{{ route('login') }}" class="button">Log In</a>
+                        <a href="{{ route('register') }}" class="buttonv2">Register</a>
+                    </div>
                     @endauth
                 </div>
                 <!-- hamburger menu  -->

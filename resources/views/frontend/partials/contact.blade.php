@@ -62,19 +62,31 @@
                     @csrf
                     <div class="input--group">
                         <label for="fname">Full name</label>
-                        <input type="text" id="fname" placeholder="Jone Dee" name="name">
+                        <input type="text" id="fname" placeholder="Jone Dee" name="name" value="{{ old('name') }}">
+                        @error('name')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="input--group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" placeholder="jrosstherealt@gmail.com" name="email">
+                        <input type="email" id="email" placeholder="jrosstherealt@gmail.com" name="email" value="{{ old('email') }}">
+                        @error('email')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="input--group">
                         <label for="phone">Phone Number</label>
-                        <input type="number" id="phone" placeholder="+04 652 23660" name="phone">
+                        <input type="number" id="phone" placeholder="+04 652 23660" name="phone" value="{{ old('phone') }}">
+                        @error('phone')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="input--group">
                         <label for="message">Your Message</label>
-                        <textarea placeholder="Message" id="message" name="message"></textarea>
+                        <textarea placeholder="Message" id="message" name="message">{{ old('message') }}</textarea>
+                        @error('message')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <button type="submit" class="button">Submit Now</button>
                 </form>
