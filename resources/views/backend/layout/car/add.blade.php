@@ -109,7 +109,7 @@
             </div>
           </div>
           <div class="form-group">
-            <input type="file" name="images[]" class="form-control" id="imagesInput" multiple>
+            <input type="file" name="images[]" class="form-control" id="imagesInputUpload" multiple>
             @error('images')
         <div class="alert alert-danger">{{ $message }}</div>
       @enderror
@@ -118,7 +118,7 @@
 
 
           <!-- while add imgages Previews here // -->
-          <div id="imagesPreviews">
+          <div id="imagesPreviewsUpload">
 
           </div>
 
@@ -234,7 +234,6 @@
 
   <!-- ----------------------on click add more image-------------------------------- -->
   <script>
-
     let sl = 0;
     function addmore() {
     $(document).ready(function () {
@@ -244,7 +243,7 @@
     });
 
     let newImage = `
-        <div class="row" id="thisField">
+      <div class="row" id="thisField">
     <div class="col-sm-4">
     <div class="form-group" >
      <input type="file" name="images[]" class="form-control" multiple>
@@ -252,38 +251,45 @@
     </div>
     <div class="col-sm-4">
     <div class="form-group">
-        <button type="button" class="btn btn-danger deleteImageDiv">Delete</button>
-        </div>
+      <button type="button" class="btn btn-danger deleteImageDiv">Delete</button>
+      </div>
     </div>
     </div>
       `;
     $("#newImagefeild").append(newImage);
     sl++;
     }
-    </script>
-  <!-- ----------------------on click add more image-------------------------------- -->
-
-  <script>
-    document.getElementById('imagesInput').addEventListener('change', function (event) {
-    const imagesPreviews = document.getElementById('imagesPreviews');
-    imagesPreviews.innerHTML = ''; // Clear previous previews
-
-    const files = event.target.files;
-    //console.log(files);
-    if (files) {
-    Array.from(files).forEach(file => {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-      const img = document.createElement('img');
-      img.src = e.target.result;
-      img.style.maxWidth = '150px';
-      img.style.margin = '10px';
-      imagesPreviews.appendChild(img);
-      };
-      reader.readAsDataURL(file);
-    });
-    }
-    });
-
   </script>
+
+
+  <!-- ----------------------on click add more image-------------------------------- -->
+  <script>
+    document.getElementById('imagesInputUpload').addEventListener('change', function (event) {
+        const imagesPreviewsUpload = document.getElementById('imagesPreviewsUpload');
+        imagesPreviewsUpload.innerHTML = ''; // Clear previous previews
+
+        const filesUpload = event.target.files;
+        console.log(filesUpload.length); // Log files to console for debugging
+
+        if (filesUpload.length) {
+            Array.from(filesUpload).forEach(file => {
+                // Optional: Validate file type (e.g., only images)
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.style.maxWidth = '150px';
+                        img.style.margin = '10px';
+                        imagesPreviewsUpload.appendChild(img);
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    console.error('File is not an image:', file);
+                }
+            });
+        }
+    });
+</script>
+<!-- ----------------------on click add more image end-------------------------------- -->
 @endpush
