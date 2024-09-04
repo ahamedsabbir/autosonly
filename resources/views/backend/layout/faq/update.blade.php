@@ -8,15 +8,21 @@
     <!-- jquery validation -->
     <div class="card card-primary">
       <div class="card-header">
-        <h3 class="card-title">Quick Example <small>jQuery Validation</small></h3>
+      <div class="row">
+                            <div class="col-md-2">
+                                <h3 class="card-title">Faq Update Form</h3>
+                            </div>
+                            <div class="col-md-2 offset-8 text-right">
+                                <a href="{{ route('admin-faq.index') }}" class="btn btn-dark">Back</a>
+                            </div>
+                        </div>
       </div>
       <!-- /.card-header -->
       <!-- form start -->
 
-      <form id="quickForm" novalidate="novalidate" action="{{ route('faq.update', $data->id) }}" method="POST">
+      <form id="quickForm" novalidate="novalidate" action="{{ route('admin-faq.update', $data->id) }}" method="POST">
         @csrf
         @method('PUT')
-        <input type="text" name="" id="" hidden value="{{$data->id}}">
         <div class="card-body">
           <div class="form-group">
             <label for="exampleInputTitle1">Title</label>

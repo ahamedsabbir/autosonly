@@ -19,12 +19,13 @@
       </div>
       <!-- /.card-header -->
       <!-- form start -->
-      <form method="post" action="{{ route('caradds') }}" enctype="multipart/form-data" id="quickForm">
+      <form method="post" action="{{ route('admin-cars.update', $data->id) }}" enctype="multipart/form-data" id="quickForm">
         @csrf
+        @method('PUT')
         <div class="card-body">
           <div class="form-group">
             <label for="exampleInputTitle1">Name</label>
-            <input type="text" name="name" class="form-control" id="exampleInputTitle1" placeholder="Enter Name">
+            <input type="text" name="name" class="form-control" id="exampleInputTitle1" placeholder="Enter Name" value="{{$data->name}}">
           </div>
           <div class="row">
             <div class="col-sm-3">
@@ -32,28 +33,28 @@
               <div class="form-group">
                 <!-- make or brand -->
                 <label>Brand</label>
-                <input type="text" name="make" class="form-control" id="make" placeholder="Enter Brand">
+                <input type="text" name="make" class="form-control" id="make" placeholder="Enter Brand" value="{{$data->make  }}">
               </div>
             </div>
             <div class="col-sm-3">
               <!-- select -->
               <div class="form-group">
                 <label>Model</label>
-                <input type="text" name="model" class="form-control" id="model" placeholder="Enter Model">
+                <input type="text" name="model" class="form-control" id="model" placeholder="Enter Model" value="{{$data->model}}">
               </div>
             </div>
             <div class="col-sm-3">
               <!-- select -->
               <div class="form-group">
                 <label>Year</label>
-                <input type="text" name="year" class="form-control" id="year" placeholder="Enter Year">
+                <input type="text" name="year" class="form-control" id="year" placeholder="Enter Year" value="{{$data->year}}">
               </div>
             </div>
             <div class="col-sm-3">
               <!-- select -->
               <div class="form-group">
                 <label>License Plate</label>
-                <input type="text" name="license_plate" class="form-control" id="license_plate" placeholder="License Plate">
+                <input type="text" name="license_plate" class="form-control" id="license_plate" placeholder="License Plate" value="{{$data->license_plate}}" disabled>
               </div>
             </div>
 
@@ -64,7 +65,7 @@
               <div class="form-group">
                 <!-- make or brand -->
                 <label>Available</label>
-                <select class="form-control" name="available" id="available">
+                <select class="form-control" name="available" id="available" value="{{$data->available}}">
                   <option value="yes">Yes</option>
                   <option value="no">No</option>
                 </select>
@@ -76,7 +77,7 @@
               <div class="form-group">
                 <!-- make or brand -->
                 <label>Status</label>
-                <select class="form-control" name=" status" id="available">
+                <select class="form-control" name=" status" id="available" value="{{$data->status}}">
                   <option value="ok">Active</option>
                   <option value="repair">Repair</option>
                 </select>
@@ -87,7 +88,7 @@
               <!-- select -->
               <div class="form-group">
                 <label>Rental Price Per Day</label>
-                <input type="text" name="rental_price_per_day" class="form-control" id="rental_price_per_day" placeholder="Enter Price">
+                <input type="text" name="rental_price_per_day" class="form-control" id="rental_price_per_day" placeholder="Enter Price" value="{{$data->rental_price_per_day}}">
               </div>
             </div>
           </div>

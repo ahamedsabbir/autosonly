@@ -33,6 +33,7 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
+       //  Create a validator instance and define validation rules for the request data
         $validator = Validator::make($request->all(), [
             'title' => 'required|string',
             'description' => 'required|string',
@@ -64,7 +65,7 @@ class FaqController extends Controller
                 ->success('Faq Data Added.');
 
             // Redirect to the FAQ index page with a success message
-            return redirect(route('faq.index'))->with('t-success', 'Faq added successfully.');
+            return redirect(route('admin-faq.index'))->with('t-success', 'Faq added successfully.');
         } catch (Exception $e) {
             // If an error occurs, redirect back with an error message
             return back()->with('t-error', 'Failed to added Faq');
@@ -121,7 +122,7 @@ class FaqController extends Controller
                     'position' => 'bottom-right',
                 ])
                 ->success('Faq Data Update.');
-            return redirect(route('faq.index'))->with('t-success', 'Faq Update successfully.');
+            return redirect(route('admin-faq.index'))->with('t-success', 'Faq Update successfully.');
         } catch (Exception $e) {
             return back()->with('t-error', 'Failed to Update Faq');
         }
@@ -140,6 +141,6 @@ class FaqController extends Controller
                     'position' => 'bottom-right',
                 ])
                 ->success('Faq Data Delete Success.');
-        return redirect()->route('faq.index');
+        return redirect()->route('admin-faq.index');
     }
 }

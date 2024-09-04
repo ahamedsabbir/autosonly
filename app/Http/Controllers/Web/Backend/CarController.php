@@ -16,8 +16,8 @@ class CarController extends Controller
      */
     public function index()
     {
-        $cars = Car::all();
-        return view('backend.layout.car.index');
+        $cars = Car::with('images')->orderBy("created_at", "desc")->get();
+       return view('backend.layout.car.index', compact('cars'));
     }
 
     /**
@@ -33,7 +33,7 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-
+        //  Create a validator instance and define validation rules for the request data
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:100',
             'make' => 'required|string|max:100',
@@ -45,6 +45,7 @@ class CarController extends Controller
             'status' => 'required|in:repair,ok',
             'images.*' => 'required|image|mimes:png,jpg,jpeg,webp',
         ]);
+
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
@@ -60,19 +61,24 @@ class CarController extends Controller
                 'available' => $request->available,
                 'status' => $request->status,
             ]);
-        
+
+            // Check if the request contains any files with the name 'images'
             if ($request->hasFile('images')) {
+                // Loop through each file in the 'images' array
                 foreach ($request->file('images') as $key => $file) {
                     $extension = $file->getClientOriginalExtension();
+                    // Create a unique file name using the key and current timestamp
                     $imagePath = $key . '-' . time() . '.' . $extension;
                     $path = public_path('uploads/cars');
                     $file->move($path, $imagePath);
+                    // Create a new record in the CarsImage table with the car ID and image URL
                     CarsImage::create([
                         'car_id' => $car->id,
                         'image_url' => $imagePath,
                     ]);
                 }
             }
+
             // Flash a success message with options
             flash()
                 ->options([
@@ -82,7 +88,7 @@ class CarController extends Controller
                 ->success('Car Data Added.');
 
             // Redirect to the Car index page with a success message
-            return redirect(route('car'))->with('t-success', 'Car added successfully.');
+            return redirect(route('admin-cars.index'))->with('t-success', 'Car added successfully.');
         } catch (Exception $e) {
             // If an error occurs, redirect back with an error message
             return back()->with('t-error', 'Failed to added Car');
@@ -103,7 +109,8 @@ class CarController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = Car::find($id);
+        return view('backend.layout.car.update', compact('data'));
     }
 
     /**
@@ -111,15 +118,16 @@ class CarController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //  Create a validator instance and define validation rules for the request data
         $validator = Validator::make($request->all(), [
-            'name' => 'sometimes|required|string|max:100',
-            'make' => 'sometimes|required|string|max:100',
-            'model' => 'sometimes|required|string|max:100',
-            'year' => 'sometimes|required|date',
-            'license_plate' => 'sometimes|required|string|max:255|unique:cars,license_plate,' . $id,
-            'rental_price_per_day' => 'sometimes|required|numeric',
-            'available' => 'sometimes|required|in:yes,no',
-            'status' => 'sometimes|required|in:repair,ok',
+            'name' => 'required|string|max:100',
+            'make' => 'required|string|max:100',
+            'model' => 'required|string|max:100',
+            'year' => 'required',
+            'rental_price_per_day' => 'required|numeric',
+            'available' => 'required|in:yes,no',
+            'status' => 'required|in:repair,ok',
+            //'images.*' => 'required|image|mimes:png,jpg,jpeg,webp',
         ]);
 
         if ($validator->fails()) {
@@ -128,7 +136,16 @@ class CarController extends Controller
 
         try {
             $car = Car::findOrFail($id);
-            $car->update($request->all());
+            // update Car entry with the sanitized data
+            $car->update([
+                'name' => $request->name,
+                'make' => $request->make,
+                'model' => $request->model,
+                'year' => $request->year,
+                'rental_price_per_day' => $request->rental_price_per_day,
+                'available' => $request->available,
+                'status' => $request->status,
+            ]);
 
             // Flash a success message with options
             flash()
@@ -139,7 +156,7 @@ class CarController extends Controller
                 ->success('Car Data Updated.');
 
             // Redirect to the Car index page with a success message
-            return redirect(route('car.index'))->with('t-success', 'Car updated successfully.');
+            return redirect(route('admin-cars.index'))->with('t-success', 'Car updated successfully.');
         } catch (Exception $e) {
             return back()->with('t-error', 'Failed to update Car');
         }
@@ -158,6 +175,6 @@ class CarController extends Controller
                 'position' => 'bottom-right',
             ])
             ->success('Car Data Delete Success.');
-        return redirect()->route('car.index');
+        return redirect()->route('admin-cars.index');
     }
 }
