@@ -7,7 +7,7 @@
   <div class="col-md-12">
     <!-- jquery validation -->
     <div class="card">
-      <div class="card-header " style="background-color:#ab91d2">
+      <div class="card-header">
         <div class="row">
           <div class="col-md-2">
             <h3 class="card-title">Car Add Form</h3>
@@ -24,7 +24,7 @@
         <div class="card-body">
           <div class="form-group">
             <label for="exampleInputTitle1">Name</label>
-            <input type="text" name="name" class="form-control" id="exampleInputTitle1" placeholder="Enter title">
+            <input type="text" name="name" class="form-control" id="exampleInputTitle1" placeholder="Enter Name">
           </div>
           <div class="row">
             <div class="col-sm-4">
@@ -32,21 +32,21 @@
               <div class="form-group">
                 <!-- make or brand -->
                 <label>Brand</label>
-                <input type="text" name="make" class="form-control" id="make" placeholder="Enter title">
+                <input type="text" name="make" class="form-control" id="make" placeholder="Enter Brand">
               </div>
             </div>
             <div class="col-sm-4">
               <!-- select -->
               <div class="form-group">
                 <label>Model</label>
-                <input type="text" name="model" class="form-control" id="model" placeholder="Enter title">
+                <input type="text" name="model" class="form-control" id="model" placeholder="Enter Model">
               </div>
             </div>
             <div class="col-sm-4">
               <!-- select -->
               <div class="form-group">
                 <label>Year</label>
-                <input type="text" name="year" class="form-control" id="year" placeholder="Enter title">
+                <input type="text" name="year" class="form-control" id="year" placeholder="Enter Year">
               </div>
             </div>
 
@@ -80,7 +80,7 @@
               <!-- select -->
               <div class="form-group">
                 <label>Rental Price Per Day</label>
-                <input type="text" name="price" class="form-control" id="price" placeholder="Enter title">
+                <input type="text" name="price" class="form-control" id="price" placeholder="Enter Price">
               </div>
             </div>
           </div>
@@ -88,7 +88,7 @@
 
  <!-- ===========================image upload area start================================= -->
           
-          <div class="btn-group w-50">
+          <div class="btn-group w-40">
             <span class="btn btn-success col fileinput-button">
               <i class="fas fa-plus"></i>
               <span>Add files</span>
@@ -158,49 +158,90 @@
   <script src="{{asset('backend')}}/plugins/jquery-validation/jquery.validate.min.js"></script>
   <script src="{{asset('backend')}}/plugins/jquery-validation/additional-methods.min.js"></script>
 
-  <!-- <script>
+  <script>
   $(function () {
     $.validator.setDefaults({
     submitHandler: function () {
       alert( "Form successful submitted!" );
     }
     });
-    $('#quickForm').validate({
-    rules: {
-      title: {
-      required: true,
-      title: true,
-      },
-      description: {
-      required: true,
-      minlength: 5
-      },
-    },
-    messages: {
-      title: {
-      required: "Please enter a title address",
-      title: "Please enter a valid title address"
-      },
-      description: {
-      required: "Please provide a description",
-      minlength: "Your description must fillup"
-      },
-    },
-    errorElement: 'span',
-    errorPlacement: function (error, element) {
-      error.addClass('invalid-feedback');
-      element.closest('.form-group').append(error);
-    },
-    highlight: function (element, errorClass, validClass) {
-      $(element).addClass('is-invalid');
-    },
-    unhighlight: function (element, errorClass, validClass) {
-      $(element).removeClass('is-invalid');
-    }
+    $(document).ready(function () {
+    $("#quickForm").validate({
+        rules: {
+            name: {
+                required: true,
+                minlength: 2
+            },
+            make: {
+                required: true
+            },
+            model: {
+                required: true
+            },
+            year: {
+                required: true,
+                digits: true,
+                minlength: 4,
+                maxlength: 4
+            },
+            available: {
+                required: true
+            },
+            status: {
+                required: true
+            },
+            price: {
+                required: true,
+                number: true
+            }
+        },
+        messages: {
+            name: {
+                required: "Please enter your name",
+                minlength: "Your name must be at least 2 characters long"
+            },
+            make: {
+                required: "Please enter the brand"
+            },
+            model: {
+                required: "Please enter the model"
+            },
+            year: {
+                required: "Please enter the year",
+                digits: "Please enter a valid year",
+                minlength: "Year must be 4 digits",
+                maxlength: "Year must be 4 digits"
+            },
+            available: {
+                required: "Please select availability"
+            },
+            status: {
+                required: "Please select the status"
+            },
+            price: {
+                required: "Please enter the rental price per day",
+                number: "Please enter a valid price"
+            }
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+            error.addClass('invalid-feedback');
+            element.closest('.form-group').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
+        }
     });
-  });
-  </script> -->
+});
 
+  });
+  </script>
+<!-- ------------------------------ -->
+
+<!-- ------------------------------ -->
 
   <!-- dropzonejs -->
   <script src="{{asset('backend')}}/plugins/dropzone/min/dropzone.min.js"></script>
