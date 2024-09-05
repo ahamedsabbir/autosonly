@@ -54,7 +54,7 @@
             <div class="col-sm-3">
               <div class="form-group">
                 <label>Year</label>
-                <input type="text" name="year" class="form-control" id="year" placeholder="Enter Year"
+                <input type="year" name="year" class="form-control" id="year" placeholder="Enter Year"
                   value="{{ old('year') }}">
                 @error('year')
           <div class="alert alert-danger">{{ $message }}</div>

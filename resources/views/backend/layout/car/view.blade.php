@@ -22,8 +22,10 @@
 
 @foreach ( $data->images as $image )
 <img src="{{ asset("/uploads/cars/".$image->image_url) }}" alt="Favicon" width="200px" height="200px">
-
 @endforeach
+<div class="">
+  
+</div>
      {{$data->name}}
      {{$data->make}}
      {{$data->model}}
