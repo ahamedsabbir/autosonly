@@ -12,18 +12,13 @@
             <div class="footer--box">
                 <h4>Pages</h4>
                 <ul>
+                    @if (App\Models\Page::count() > 0)
+                    @foreach (App\Models\Page::all() as $page)
                     <li>
-                        <a href="#">About</a>
+                        <a href="{{ route('page', $page->slug) }}" class="@if (request()->routeIs('page')) active @endif">{{ $page->slug }}</a>
                     </li>
-                    <li>
-                        <a href="#">Pricing</a>
-                    </li>
-                    <li>
-                        <a href="#">Car</a>
-                    </li>
-                    <li>
-                        <a href="#">Consulting</a>
-                    </li>
+                    @endforeach
+                    @endif
                 </ul>
             </div>
             <!-- footer box  -->
@@ -52,7 +47,7 @@
                 <h4>Any Questions?</h4>
                 <ul>
                     <li>
-                        <a href="mailto:@php App\Helper\Settings::get()->email @endphp">@php App\Helper\Settings::get()->email @endphp</a>
+                        <a href="mailto:@php echo App\Helper\Settings::get()->email @endphp">@php echo App\Helper\Settings::get()->email @endphp</a>
                     </li>
                     <li>
                         <p>

@@ -3,17 +3,16 @@
 namespace App\Http\Controllers\Web\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Faq;
 use App\Models\Page;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index(Request $request)
-    {
-        //$request->session()->put('success', "Please Login First");
-        //return redirect()->route('home')->with('alert', 'Please Login First');	
+    {	
+        $faqs = Faq::all();
         return view('frontend.layout.index');
-        //return redirect()->back()->with('success', 'Operation successful!');
     }
     public function faq()
     {
@@ -23,9 +22,9 @@ class HomeController extends Controller
     {
         return view('frontend.layout.about');
     }
-    public function dynamicPages($id)
+    public function dynamicPages($slug)
     {
-        $page = Page::where('id', $id)->first();
+        $page = Page::where('slug', $slug)->first();
         if (!$page) {
             abort(404);
         }
