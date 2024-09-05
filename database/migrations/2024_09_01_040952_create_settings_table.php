@@ -27,8 +27,8 @@ return new class extends Migration
             $table->timestamps();
         });
         DB::table('settings')->insert([
-            'favicon' => 'default-favicon.ico',
-            'logo' => 'default-logo.png',
+            'favicon' => 'default/logo.svg',
+            'logo' => 'default/logo.svg',
             'title' => 'My Laravel Site',
             'keywords' => 'Laravel, AdminLTE, PHP',
             'description' => 'This is a description for my Laravel site.',

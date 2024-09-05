@@ -34,13 +34,13 @@ class PageController extends Controller
     public function store(Request $request, FlasherInterface $flasher)
     {
         $request->validate([
-            'name' => 'required',
+            'slug' => 'required',
             'title' => 'max:255',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $page = new page;
-        $page->name = $request->name;
+        $page->slug = $request->slug;
         $page->title = $request->title;
         $page->description = $request->description;
 

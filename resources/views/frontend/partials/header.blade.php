@@ -17,13 +17,6 @@
                         <li>
                             <a href="{{ url('cars') }}">Car Listing</a>
                         </li>
-                        @if (App\Models\Page::count() > 0)
-                            @foreach (App\Models\Page::all() as $page)
-                                <li>
-                                    <a href="{{ route('page', $page->id) }}" class="@if (request()->routeIs('page')) active @endif">{{ $page->name }}</a>
-                                </li>
-                            @endforeach
-                        @endif
                         <li>
                             <a href="{{ route('about') }}">About Us</a>
                         </li>

@@ -23,9 +23,9 @@
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="exampleInputName1">Name <span class="text-danger">*</span></label>
-                        <input type="text" name="name" class="form-control" id="exampleInputName1" placeholder="Enter Name" value="{{ old('name') }}">
-                        @error('name')
+                        <label for="exampleInputSlug1">Slug <span class="text-danger">*</span></label>
+                        <input type="text" name="slug" class="form-control" id="exampleInputSlug1" placeholder="Enter Slug" value="{{ old('slug') }}">
+                        @error('slug')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>

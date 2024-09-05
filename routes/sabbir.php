@@ -14,7 +14,7 @@ Route::get('home', [HomeController::class, 'index'])->name('home');
 Route::get('faq', [HomeController::class, 'faq'])->name('faq');
 Route::get('about', [HomeController::class, 'about'])->name('about');
 Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');
-Route::get('page/{id}', [HomeController::class, 'dynamicPages'])->name('page');
+Route::get('page/{slug}', [HomeController::class, 'dynamicPages'])->name('page');
 
 
 

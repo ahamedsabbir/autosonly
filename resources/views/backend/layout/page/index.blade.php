@@ -26,7 +26,7 @@
                         <!-- table header show table row-heading -->
                         <tr>
                             <th>SL</th>
-                            <th>Name</th>
+                            <th>Slug</th>
                             <th>Title</th>
                             <th>Action</th>
                         </tr>
@@ -37,7 +37,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <!-- raw code for Description lenth fixed -->
-                            <td>{{ strlen($row->name) <= 10 ? $row->name : substr($row->title, 0, 50) }}</td>
+                            <td>{{ strlen($row->slug) <= 10 ? $row->slug : substr($row->slug, 0, 50) }}</td>
                             <td>
                                 {{ strlen($row->title) <= 10 ? $row->title : substr($row->title, 0, 20) . '...' }}
                             </td>
@@ -68,7 +68,7 @@
                         <!-- table footer show table row-heading -->
                         <tr>
                             <th>SL</th>
-                            <th>Name</th>
+                            <th>Slug</th>
                             <th>Title</th>
                             <th>Action</th>
                         </tr>
