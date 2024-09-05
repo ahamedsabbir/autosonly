@@ -25,8 +25,6 @@ Route::middleware(['auth', 'user'])->group(function () {
 
 
 
-
-
 require __DIR__ . '/helal.php';
 require __DIR__ . '/sabbir.php';
 require __DIR__ . '/auth.php';

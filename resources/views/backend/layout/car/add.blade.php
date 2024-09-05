@@ -13,135 +13,127 @@
             <h3 class="card-title">Car Add Form</h3>
           </div>
           <div class="col-md-2 offset-8 text-right">
-            <a href="" class="btn btn-dark">Back</a>
+            <a href="{{ route('admin-cars.index') }}" class="btn btn-dark">Back</a>
           </div>
         </div>
       </div>
       <!-- /.card-header -->
       <!-- form start -->
-      <form id="quickForm" novalidate="novalidate" action="{{ route('caradds') }}" method="POST">
+      <form method="post" action="{{ route('admin-cars.store') }}" enctype="multipart/form-data" id="quickForm">
         @csrf
         <div class="card-body">
           <div class="form-group">
             <label for="exampleInputTitle1">Name</label>
-            <input type="text" name="name" class="form-control" id="exampleInputTitle1" placeholder="Enter Name">
+            <input type="text" name="name" class="form-control" id="exampleInputTitle1" placeholder="Enter Name"
+              value="{{ old('name') }}">
+            @error('name')
+        <div class="alert alert-danger">{{ $message }}</div>
+      @enderror
           </div>
           <div class="row">
-            <div class="col-sm-4">
-              <!-- select -->
+            <div class="col-sm-3">
               <div class="form-group">
-                <!-- make or brand -->
                 <label>Brand</label>
-                <input type="text" name="make" class="form-control" id="make" placeholder="Enter Brand">
+                <input type="text" name="make" class="form-control" id="make" placeholder="Enter Brand"
+                  value="{{ old('make') }}">
+                @error('make')
+          <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
               </div>
             </div>
-            <div class="col-sm-4">
-              <!-- select -->
+            <div class="col-sm-3">
               <div class="form-group">
                 <label>Model</label>
-                <input type="text" name="model" class="form-control" id="model" placeholder="Enter Model">
+                <input type="text" name="model" class="form-control" id="model" placeholder="Enter Model"
+                  value="{{ old('model') }}">
+                @error('model')
+          <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
               </div>
             </div>
-            <div class="col-sm-4">
-              <!-- select -->
+            <div class="col-sm-3">
               <div class="form-group">
                 <label>Year</label>
-                <input type="text" name="year" class="form-control" id="year" placeholder="Enter Year">
+                <input type="text" name="year" class="form-control" id="year" placeholder="Enter Year"
+                  value="{{ old('year') }}">
+                @error('year')
+          <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
               </div>
             </div>
-
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label>License Plate</label>
+                <input type="text" name="license_plate" class="form-control" id="license_plate"
+                  placeholder="License Plate" value="{{ old('license_plate') }}">
+                @error('license_plate')
+          <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+              </div>
+            </div>
           </div>
           <div class="row">
             <div class="col-sm-4">
-              <!-- select -->
               <div class="form-group">
-                <!-- make or brand -->
                 <label>Available</label>
                 <select class="form-control" name="available" id="available">
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
+                  <option value="yes" {{ old('available') == 'yes' ? 'selected' : '' }}>Yes</option>
+                  <option value="no" {{ old('available') == 'no' ? 'selected' : '' }}>No</option>
                 </select>
+                @error('available')
+          <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
               </div>
             </div>
-
             <div class="col-sm-4">
-              <!-- select -->
               <div class="form-group">
-                <!-- make or brand -->
                 <label>Status</label>
-                <select class="form-control" name=" status" id="available">
-                  <option value="active">Active</option>
-                  <option value="repair">Repair</option>
+                <select class="form-control" name="status" id="status">
+                  <option value="ok" {{ old('status') == 'ok' ? 'selected' : '' }}>Active</option>
+                  <option value="repair" {{ old('status') == 'repair' ? 'selected' : '' }}>Repair</option>
                 </select>
+                @error('status')
+          <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
               </div>
             </div>
-
             <div class="col-sm-4">
-              <!-- select -->
               <div class="form-group">
                 <label>Rental Price Per Day</label>
-                <input type="text" name="price" class="form-control" id="price" placeholder="Enter Price">
+                <input type="text" name="rental_price_per_day" class="form-control" id="rental_price_per_day"
+                  placeholder="Enter Price" value="{{ old('rental_price_per_day') }}">
+                @error('rental_price_per_day')
+          <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
               </div>
             </div>
           </div>
+          <div class="form-group">
+            <input type="file" name="images[]" class="form-control" id="imagesInputUpload" multiple>
+            @error('images')
+        <div class="alert alert-danger">{{ $message }}</div>
+      @enderror
+          </div>
 
 
- <!-- ===========================image upload area start================================= -->
-          
-          <div class="btn-group w-40">
-            <span class="btn btn-success col fileinput-button">
-              <i class="fas fa-plus"></i>
-              <span>Add files</span>
-            </span>
+
+          <!-- while add imgages Previews here // -->
+          <div id="imagesPreviewsUpload">
 
           </div>
-           <!-- ===========================image upload previews ================================= -->
-          <div class="table table-striped files" id="previews">
-                  <div id="template" class="row mt-2">
-                    <div class="col-auto">
-                        <span class="preview"><img src="data:," alt="" data-dz-thumbnail /></span>
-                    </div>
-                    <div class="col d-flex align-items-center">
-                        <p class="mb-0">
-                          <span class="lead" data-dz-name></span>
-                          (<span data-dz-size></span>)
-                        </p>
-                        <strong class="error text-danger" data-dz-errormessage></strong>
-                    </div>
-                    <div class="col-4 d-flex align-items-center">
-                        <div class="progress progress-striped active w-100" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                          <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
-                        </div>
-                    </div>
-                    <div class="col-auto d-flex align-items-center">
-                      <div class="btn-group">
-                        <button class="btn btn-primary start">
-                          <i class="fas fa-upload"></i>
-                          <span>Start</span>
-                        </button>
-                        <button data-dz-remove class="btn btn-warning cancel">
-                          <i class="fas fa-times-circle"></i>
-                          <span>Cancel</span>
-                        </button>
-                        <button data-dz-remove class="btn btn-danger delete">
-                          <i class="fas fa-trash"></i>
-                          <span>Delete</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
 
 
-
-          <!-- ===========================image upload area End================================= -->
-
+          <div id="newImagefeild">
+            <!-- While click add more new field here add -->
+          </div>
+          <a href="#" onclick="addmore()" class="btn btn-primary">Add More</a>
         </div>
-        <!-- /.card-body -->
         <div class="card-footer">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-success">Submit</button>
         </div>
       </form>
+      <!-- --------------------------form end-------------------------- -->
+
     </div>
     <!-- /.card -->
   </div>
@@ -156,137 +148,148 @@
 
 @push('scripts_more')
   <script src="{{asset('backend')}}/plugins/jquery-validation/jquery.validate.min.js"></script>
-  <script src="{{asset('backend')}}/plugins/jquery-validation/additional-methods.min.js"></script>
 
   <script>
-  $(function () {
-    $.validator.setDefaults({
-    submitHandler: function () {
-      alert( "Form successful submitted!" );
-    }
-    });
+    $(function () {
     $(document).ready(function () {
-    $("#quickForm").validate({
-        rules: {
-            name: {
-                required: true,
-                minlength: 2
-            },
-            make: {
-                required: true
-            },
-            model: {
-                required: true
-            },
-            year: {
-                required: true,
-                digits: true,
-                minlength: 4,
-                maxlength: 4
-            },
-            available: {
-                required: true
-            },
-            status: {
-                required: true
-            },
-            price: {
-                required: true,
-                number: true
-            }
+      $("#quickForm").validate({
+      rules: {
+        name: {
+        required: true,
+        minlength: 2
         },
-        messages: {
-            name: {
-                required: "Please enter your name",
-                minlength: "Your name must be at least 2 characters long"
-            },
-            make: {
-                required: "Please enter the brand"
-            },
-            model: {
-                required: "Please enter the model"
-            },
-            year: {
-                required: "Please enter the year",
-                digits: "Please enter a valid year",
-                minlength: "Year must be 4 digits",
-                maxlength: "Year must be 4 digits"
-            },
-            available: {
-                required: "Please select availability"
-            },
-            status: {
-                required: "Please select the status"
-            },
-            price: {
-                required: "Please enter the rental price per day",
-                number: "Please enter a valid price"
-            }
+        make: {
+        required: true
         },
-        errorElement: 'span',
-        errorPlacement: function (error, element) {
-            error.addClass('invalid-feedback');
-            element.closest('.form-group').append(error);
+        model: {
+        required: true
         },
-        highlight: function (element, errorClass, validClass) {
-            $(element).addClass('is-invalid');
+        year: {
+        required: true,
+        digits: true,
+        minlength: 4,
+        maxlength: 4
         },
-        unhighlight: function (element, errorClass, validClass) {
-            $(element).removeClass('is-invalid');
+        available: {
+        required: true
+        },
+        status: {
+        required: true
+        },
+        rental_price_per_day: {
+        required: true,
+        number: true
+        },
+        license_plate: {
+        required: true,
+        },
+      },
+      messages: {
+        name: {
+        required: "Please enter your name",
+        minlength: "Your name must be at least 2 characters long"
+        },
+        make: {
+        required: "Please enter the brand"
+        },
+        model: {
+        required: "Please enter the model"
+        },
+        year: {
+        required: "Please enter the year",
+        digits: "Please enter a valid year",
+        minlength: "Year must be 4 digits",
+        maxlength: "Year must be 4 digits"
+        },
+        available: {
+        required: "Please select availability"
+        },
+        status: {
+        required: "Please select the status"
+        },
+        rental_price_per_day: {
+        required: "Please enter the rental price per day",
+        number: "Please enter a valid price"
+        },
+        license_plate: {
+        required: "Please enter the license_plate",
+        },
+      },
+      errorElement: 'span',
+      errorPlacement: function (error, element) {
+        error.addClass('invalid-feedback');
+        element.closest('.form-group').append(error);
+      },
+      highlight: function (element, errorClass, validClass) {
+        $(element).addClass('is-invalid');
+      },
+      unhighlight: function (element, errorClass, validClass) {
+        $(element).removeClass('is-invalid');
+      }
+      });
+    });
+    });
+  </script>
+
+
+  <!-- ----------------------on click add more image-------------------------------- -->
+  <script>
+    let sl = 0;
+    function addmore() {
+    $(document).ready(function () {
+      $('#newImagefeild').on('click', '.deleteImageDiv', function () {
+      $(this).closest('#thisField').remove();
+      });
+    });
+
+    let newImage = `
+      <div class="row" id="thisField">
+    <div class="col-sm-4">
+    <div class="form-group" >
+     <input type="file" name="images[]" class="form-control" multiple>
+    </div>
+    </div>
+    <div class="col-sm-4">
+    <div class="form-group">
+      <button type="button" class="btn btn-danger deleteImageDiv">Delete</button>
+      </div>
+    </div>
+    </div>
+      `;
+    $("#newImagefeild").append(newImage);
+    sl++;
+    }
+  </script>
+
+
+  <!-- ----------------------on click add more image-------------------------------- -->
+  <script>
+    document.getElementById('imagesInputUpload').addEventListener('change', function (event) {
+        const imagesPreviewsUpload = document.getElementById('imagesPreviewsUpload');
+        imagesPreviewsUpload.innerHTML = ''; // Clear previous previews
+
+        const filesUpload = event.target.files;
+        console.log(filesUpload.length); // Log files to console for debugging
+
+        if (filesUpload.length) {
+            Array.from(filesUpload).forEach(file => {
+                // Optional: Validate file type (e.g., only images)
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.style.maxWidth = '150px';
+                        img.style.margin = '10px';
+                        imagesPreviewsUpload.appendChild(img);
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    console.error('File is not an image:', file);
+                }
+            });
         }
     });
-});
-
-  });
-  </script>
-<!-- ------------------------------ -->
-
-<!-- ------------------------------ -->
-
-  <!-- dropzonejs -->
-  <script src="{{asset('backend')}}/plugins/dropzone/min/dropzone.min.js"></script>
-
-  <!-- ------------------------------Page specific Drop Image script----------------------- -->
-  <script>
-    // DropzoneJS Demo Code Start
-    Dropzone.autoDiscover = false
-
-    // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
-    var previewNode = document.querySelector("#template")
-    previewNode.id = ""
-    var previewTemplate = previewNode.parentNode.innerHTML
-    previewNode.parentNode.removeChild(previewNode)
-
-    var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
-    url: "/target-url", // Set the url
-    thumbnailWidth: 80,
-    thumbnailHeight: 80,
-    parallelUploads: 20,
-    previewTemplate: previewTemplate,
-    autoQueue: false, // Make sure the files aren't queued until manually added
-    previewsContainer: "#previews", // Define the container to display the previews
-    clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
-    })
-
-
-var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
-var myDropzone = new Dropzone(document.body, {
-    url: "/upload",
-    headers: {
-        'X-CSRF-TOKEN': token
-    },
-    thumbnailWidth: 80,
-    thumbnailHeight: 80,
-    parallelUploads: 20,
-    previewTemplate: previewTemplate,
-    autoQueue: false,
-    previewsContainer: "#previews",
-    clickable: ".fileinput-button"
-});
-
-
-    
-    // DropzoneJS Code End
-  </script>
+</script>
+<!-- ----------------------on click add more image end-------------------------------- -->
 @endpush

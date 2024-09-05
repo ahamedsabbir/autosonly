@@ -13,13 +13,13 @@
                                 <h3 class="card-title">Faq Add Form</h3>
                             </div>
                             <div class="col-md-2 offset-8 text-right">
-                                <a href="{{ route('faq.index') }}" class="btn btn-dark">Back</a>
+                                <a href="{{ route('admin-faq.index') }}" class="btn btn-dark">Back</a>
                             </div>
                         </div>
       </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form id="quickForm" novalidate="novalidate" action="{{ route('faq.store') }}" method="POST">
+              <form id="quickForm" novalidate="novalidate" action="{{ route('admin-faq.store') }}" method="POST">
               @csrf
                 <div class="card-body">
                   <div class="form-group">

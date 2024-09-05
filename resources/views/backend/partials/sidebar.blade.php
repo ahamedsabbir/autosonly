@@ -38,59 +38,52 @@
                 data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                <li class="nav-item menu-open">
-                    <a href="{{ route('admin') }}" class="nav-link @if (request()->routeIs('admin')) active @endif">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>Dashboard</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('car') }}" class="nav-link @if (request()->routeIs('car')) active @endif">
-                        <i class="nav-icon fas fa-copy"></i>
-                        <p>
-                            Car
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('faq.index') }}" class="nav-link @if (request()->routeIs('faq.index')) active @endif">
-                        <i class="nav-icon fas fa-copy"></i>
-                        <p>FAQ</p>
-                    </a>
-                </li>
-                <li class="nav-item @if (request()->routeIs('setting')) menu-is-opening menu-open @endif">
-                    <a href="" class="nav-link @if (request()->routeIs('setting')) active @endif">
-                        <i class="nav-icon fas fa-copy"></i>
-                        <p>
-                            Setting
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('settings') }}" class="nav-link @if (request()->routeIs('settings')) active @endif">
-                                <i class="fas fa-wrench"></i>
-                                <p>App Settings</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('cms.index') }}" class="nav-link">
-                                <i class="fab fa-buromobelexperte"></i>
-                                <p>Control CMS</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('page.index') }}" class="nav-link">
-                                <i class="fab fa-themeisle"></i>
-                                <p>Dynamic Page</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
+          <li class="nav-item menu-open">
+            <a href="{{route('admin')}}" class="nav-link @if (request()->routeIs('admin')) active @endif">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>Dashboard</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('admin-cars.index')}}" class="nav-link @if (request()->routeIs('admin-cars.*')) active @endif">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Car
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+                <a href="{{route('admin-faq.index')}}" class="nav-link @if (request()->routeIs('admin-faq.*')) active @endif">
+                <i class="nav-icon fas fa-copy"></i>
+                  <p>FAQ</p>
+                </a>
+              </li>
+          <li class="nav-item @if (request()->routeIs('setting')) menu-is-opening menu-open @endif">
+            <a href="" class="nav-link @if (request()->routeIs('setting')) active  @endif">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Setting
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>App settings</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Dynamic Page</p>
+                </a>
+              </li>
             </ul>
-        </nav>
-        <!-- /.sidebar-menu -->
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
 </aside>

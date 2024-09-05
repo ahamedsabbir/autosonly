@@ -26,8 +26,7 @@
   <!-- CodeMirror -->
   <link rel="stylesheet" href="{{asset('backend')}}/plugins/codemirror/codemirror.css">
   <link rel="stylesheet" href="{{asset('backend')}}/plugins/codemirror/theme/monokai.css">
-  <!-- SimpleMDE -->
-  <link rel="stylesheet" href="{{asset('backend')}}/plugins/simplemde/simplemde.min.css">
+
 
 <!-- ------------------------------Only tables style-------------------------------------  -->
   <!-- DataTables -->
