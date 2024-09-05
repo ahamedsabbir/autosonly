@@ -31,7 +31,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::resource('page', PageController::class);
 
     Route::get('/mail', [MailController::class, 'index'])->name('mail.index');
-    Route::get('/mail/update', [MailController::class, 'update'])->name('mail.update');
+    Route::put('/mail/update', [MailController::class, 'update'])->name('mail.update');
 });
 
 
