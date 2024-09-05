@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('product_id');
+            $table->bigInteger('car_id')->unsigned()->nullable();
+            $table->foreign('car_id')->references('id')->on('cars')->onDelete('cascade');
+            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->dateTime('start_date');
             $table->dateTime('end_date');
             $table->decimal('total_price', 10, 2);

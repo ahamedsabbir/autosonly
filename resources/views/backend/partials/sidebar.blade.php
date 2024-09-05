@@ -80,6 +80,12 @@
               </a>
             </li>
             <li class="nav-item">
+              <a href="{{ route('mail.index') }}" class="nav-link">
+                <i class="fas fa-mail-bulk"></i>
+                <p>Mail Settings</p>
+              </a>
+            </li>
+            <li class="nav-item">
               <a href="{{ route('page.index') }}" class="nav-link">
                 <i class="fab fa-themeisle"></i>
                 <p>Dynamic Page</p>

@@ -55,13 +55,13 @@
 
                         <div class="form-group">
                             <label for="exampleInputmail_encryption1">Mail Encryption</label>
-                            <input type="text" name="mail_encryption" class="form-control" id="exampleInputmail_encryption1" value="{{ env('MAIL_FROM_ADDRESS') }}">
+                            <input type="text" name="mail_encryption" class="form-control" id="exampleInputmail_encryption1" value="{{ env('MAIL_ENCRYPTION') }}">
                             @error('mail_encryption') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputmail_from_address1">Mail From Address</label>
-                            <input type="text" name="mail_from_address" class="form-control" id="exampleInputmail_from_address1" value="{{ env('MAIL_ENCRYPTION') }}">
+                            <input type="text" name="mail_from_address" class="form-control" id="exampleInputmail_from_address1" value="{{ env('MAIL_FROM_ADDRESS') }}">
                             @error('mail_from_address') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
 

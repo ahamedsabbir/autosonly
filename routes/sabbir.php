@@ -17,6 +17,8 @@ Route::get('about', [HomeController::class, 'about'])->name('about');
 Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');
 Route::get('page/{slug}', [HomeController::class, 'dynamicPages'])->name('page');
 
+Route::get('/cars', [HomeController::class, 'cars'])->name('cars');
+Route::get('/car/{id}', [HomeController::class, 'car'])->name('car');
 
 
 
@@ -34,18 +36,6 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::put('/mail/update', [MailController::class, 'update'])->name('mail.update');
 });
 
-
-
-
-
-
-
-Route::get('/car', function () {
-    return view('frontend.layout.car');	
-});
-Route::get('/cars', function () {
-    return view('frontend.layout.cars');
-});
 
 
 
