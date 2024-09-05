@@ -21,6 +21,7 @@
       <!-- /.card-header -->
 
       <div class="card-body">
+
         <table id="example1" class="table table-bordered table-striped">
           <thead>
             <!-- table header show table row-heading -->
@@ -56,6 +57,7 @@
           <div class="row mt-2">
             <!-- edit action -->
             <a class="ml-3" href="{{ route('admin-cars.edit', $data->id) }}"><i class="fas fa-edit fa-fw text-primary"></i></a>
+            <!-- show modal -->
             <!-- show action -->
             <a class="ml-3" href="{{ route('admin-cars.show', $data->id) }}"><i class="fas fa-eye fa-fw text-warning"></i></a>
             <!-- delete action by form -->
