@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title> @yield('title')</title>
-    <link rel="shortcut icon" href="" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ App\Helper\Settings::get()->favicon ? asset(App\Helper\Settings::get()->favicon) : asset('default/logo.svg') }}" type="image/x-icon">
     @include('frontend.partials.style')
     @stack('css')
 </head>

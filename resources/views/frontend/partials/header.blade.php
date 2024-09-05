@@ -4,7 +4,7 @@
             <div class="col-3">
                 <!-- logo  -->
                 <a href="index.html" class="logo">
-                    <img src="{{ asset('frontend') }}/assets/images/logo.svg" alt="">
+                    <img src="{{ App\Helper\Settings::get()->logo ? asset(App\Helper\Settings::get()->logo) : asset('default/logo.svg') }}" alt="">
                 </a>
             </div>
             <div class="col-9">

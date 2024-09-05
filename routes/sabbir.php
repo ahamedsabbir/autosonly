@@ -3,6 +3,7 @@
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\CkeditorController;
 use App\Http\Controllers\Web\Backend\CmsController;
+use App\Http\Controllers\Web\Backend\MailController;
 use App\Http\Controllers\Web\Backend\PageController;
 use App\Http\Controllers\Web\Backend\SettingController;
 use App\Http\Controllers\Web\Frontend\ContactController;
@@ -28,6 +29,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/cms/{id}/status', [CmsController::class, 'statusChange'])->name('cms.status');
 
     Route::resource('page', PageController::class);
+
+    Route::get('/mail', [MailController::class, 'index'])->name('mail.index');
+    Route::get('/mail/update', [MailController::class, 'update'])->name('mail.update');
 });
 
 
