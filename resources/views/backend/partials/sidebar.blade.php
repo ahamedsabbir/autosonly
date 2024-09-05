@@ -62,7 +62,7 @@
             <a href="" class="nav-link @if (request()->routeIs('setting')) active  @endif">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Setting
+                Setting.
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
