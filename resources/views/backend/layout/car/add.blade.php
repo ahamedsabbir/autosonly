@@ -125,9 +125,9 @@
 
           <div id="newImagefeild">
             <!-- While click add more new field here add -->
-          </div>
+          <!-- </div>
           <a href="#" onclick="addmore()" class="btn btn-primary">Add More</a>
-        </div>
+        </div> -->
         <div class="card-footer">
           <button type="submit" class="btn btn-success">Submit</button>
         </div>

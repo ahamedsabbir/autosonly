@@ -100,8 +100,9 @@ class CarController extends Controller
      */
     public function show(string $id)
     {
-        $car = Car::findOrFail($id);
-        return response()->json($car);//
+        $data = Car::with('images')->findOrFail($id);
+        //dd($data->images);
+        return view('backend.layout.car.view', compact('data'));
     }
 
     /**
