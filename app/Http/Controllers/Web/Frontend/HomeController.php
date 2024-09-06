@@ -27,7 +27,7 @@ class HomeController extends Controller
     public function cars()
     {
         return view('frontend.layout.cars', [
-            'cars' => Car::paginate(12),
+            'cars' => Car::with('images', 'review')->paginate(12),
             'recent_cars' => Car::latest()->take(3)->get()
         ]);
     }
