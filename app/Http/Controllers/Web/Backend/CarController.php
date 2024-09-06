@@ -35,9 +35,9 @@ class CarController extends Controller
     {
         //  Create a validator instance and define validation rules for the request data
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:100',
-            'make' => 'required|string|max:100',
-            'model' => 'required|string|max:100',
+            'name' => 'required|string|max:50',
+            'make' => 'required|string|max:50',
+            'model' => 'required|string|max:50',
             'year' => 'required',
             'license_plate' => 'required|string|max:255|unique:cars',
             'rental_price_per_day' => 'required|numeric',

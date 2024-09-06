@@ -19,6 +19,7 @@ Route::get('page/{slug}', [HomeController::class, 'dynamicPages'])->name('page')
 
 Route::get('/cars', [HomeController::class, 'cars'])->name('cars');
 Route::get('/car/{id}', [HomeController::class, 'car'])->name('car');
+Route::get('/search', [HomeController::class, 'search'])->name('search');
 
 
 

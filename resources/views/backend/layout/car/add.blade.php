@@ -24,51 +24,46 @@
         <div class="card-body">
           <div class="form-group">
             <label for="exampleInputTitle1">Name</label>
-            <input type="text" name="name" class="form-control" id="exampleInputTitle1" placeholder="Enter Name"
-              value="{{ old('name') }}">
+            <input type="text" name="name" class="form-control" id="exampleInputTitle1" placeholder="Enter Name" value="{{ old('name') }}">
             @error('name')
-        <div class="alert alert-danger">{{ $message }}</div>
-      @enderror
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
           </div>
           <div class="row">
             <div class="col-sm-3">
               <div class="form-group">
                 <label>Brand</label>
-                <input type="text" name="make" class="form-control" id="make" placeholder="Enter Brand"
-                  value="{{ old('make') }}">
+                <input type="text" name="make" class="form-control" id="make" placeholder="Enter Brand" value="{{ old('make') }}">
                 @error('make')
-          <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
               </div>
             </div>
             <div class="col-sm-3">
               <div class="form-group">
                 <label>Model</label>
-                <input type="text" name="model" class="form-control" id="model" placeholder="Enter Model"
-                  value="{{ old('model') }}">
+                <input type="text" name="model" class="form-control" id="model" placeholder="Enter Model" value="{{ old('model') }}">
                 @error('model')
-          <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
               </div>
             </div>
             <div class="col-sm-3">
               <div class="form-group">
                 <label>Year</label>
-                <input type="text" name="year" class="form-control" id="year" placeholder="Enter Year"
-                  value="{{ old('year') }}">
+                <input type="text" name="year" class="form-control" id="year" placeholder="Enter Year" value="{{ old('year') }}">
                 @error('year')
-          <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
               </div>
             </div>
             <div class="col-sm-3">
               <div class="form-group">
                 <label>License Plate</label>
-                <input type="text" name="license_plate" class="form-control" id="license_plate"
-                  placeholder="License Plate" value="{{ old('license_plate') }}">
+                <input type="text" name="license_plate" class="form-control" id="license_plate" placeholder="License Plate" value="{{ old('license_plate') }}">
                 @error('license_plate')
-          <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
               </div>
             </div>
           </div>
@@ -81,8 +76,8 @@
                   <option value="no" {{ old('available') == 'no' ? 'selected' : '' }}>No</option>
                 </select>
                 @error('available')
-          <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
               </div>
             </div>
             <div class="col-sm-4">
@@ -93,26 +88,30 @@
                   <option value="repair" {{ old('status') == 'repair' ? 'selected' : '' }}>Repair</option>
                 </select>
                 @error('status')
-          <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
               </div>
             </div>
             <div class="col-sm-4">
               <div class="form-group">
                 <label>Rental Price Per Day</label>
-                <input type="text" name="rental_price_per_day" class="form-control" id="rental_price_per_day"
-                  placeholder="Enter Price" value="{{ old('rental_price_per_day') }}">
+                <input type="text" name="rental_price_per_day" class="form-control" id="rental_price_per_day" placeholder="Enter Price" value="{{ old('rental_price_per_day') }}">
                 @error('rental_price_per_day')
-          <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
               </div>
             </div>
           </div>
           <div class="form-group">
-            <input type="file" name="images[]" class="form-control" id="imagesInputUpload" multiple>
+            <label for="imagesInputUpload" class="text-center">
+              <img src="{{ asset('default/select_image.jpg') }}" alt="upload" width="100px">
+              <br>
+              <span>Select Image</span>
+            </label>
+            <input type="file" name="images[]" class="d-none" id="imagesInputUpload" multiple>
             @error('images')
-        <div class="alert alert-danger">{{ $message }}</div>
-      @enderror
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
           </div>
 
 
@@ -125,12 +124,12 @@
 
           <div id="newImagefeild">
             <!-- While click add more new field here add -->
-          <!-- </div>
+            <!-- </div>
           <a href="#" onclick="addmore()" class="btn btn-primary">Add More</a>
         </div> -->
-        <div class="card-footer">
-          <button type="submit" class="btn btn-success">Submit</button>
-        </div>
+            <div class="card-footer">
+              <button type="submit" class="btn btn-success">Submit</button>
+            </div>
       </form>
       <!-- --------------------------form end-------------------------- -->
 
@@ -147,98 +146,99 @@
 @endsection
 
 @push('scripts_more')
-  <script src="{{asset('backend')}}/plugins/jquery-validation/jquery.validate.min.js"></script>
+<script src="{{asset('backend')}}/plugins/jquery-validation/jquery.validate.min.js"></script>
 
-  <script>
-    $(function () {
-    $(document).ready(function () {
+<script>
+  $(function() {
+    $(document).ready(function() {
       $("#quickForm").validate({
-      rules: {
-        name: {
-        required: true,
-        minlength: 2
+        rules: {
+          name: {
+            required: true,
+            minlength: 2
+          },
+          make: {
+            required: true
+          },
+          model: {
+            required: true
+          },
+          year: {
+            required: true,
+            digits: true,
+            minlength: 4,
+            maxlength: 4
+          },
+          available: {
+            required: true
+          },
+          status: {
+            required: true
+          },
+          rental_price_per_day: {
+            required: true,
+            number: true
+          },
+          license_plate: {
+            required: true,
+          },
         },
-        make: {
-        required: true
+        messages: {
+          name: {
+            required: "Please enter your name",
+            minlength: "Your name must be at least 2 characters long"
+          },
+          make: {
+            required: "Please enter the brand"
+          },
+          model: {
+            required: "Please enter the model"
+          },
+          year: {
+            required: "Please enter the year",
+            digits: "Please enter a valid year",
+            minlength: "Year must be 4 digits",
+            maxlength: "Year must be 4 digits"
+          },
+          available: {
+            required: "Please select availability"
+          },
+          status: {
+            required: "Please select the status"
+          },
+          rental_price_per_day: {
+            required: "Please enter the rental price per day",
+            number: "Please enter a valid price"
+          },
+          license_plate: {
+            required: "Please enter the license_plate",
+          },
         },
-        model: {
-        required: true
+        errorElement: 'span',
+        errorPlacement: function(error, element) {
+          error.addClass('invalid-feedback');
+          element.closest('.form-group').append(error);
         },
-        year: {
-        required: true,
-        digits: true,
-        minlength: 4,
-        maxlength: 4
+        highlight: function(element, errorClass, validClass) {
+          $(element).addClass('is-invalid');
         },
-        available: {
-        required: true
-        },
-        status: {
-        required: true
-        },
-        rental_price_per_day: {
-        required: true,
-        number: true
-        },
-        license_plate: {
-        required: true,
-        },
-      },
-      messages: {
-        name: {
-        required: "Please enter your name",
-        minlength: "Your name must be at least 2 characters long"
-        },
-        make: {
-        required: "Please enter the brand"
-        },
-        model: {
-        required: "Please enter the model"
-        },
-        year: {
-        required: "Please enter the year",
-        digits: "Please enter a valid year",
-        minlength: "Year must be 4 digits",
-        maxlength: "Year must be 4 digits"
-        },
-        available: {
-        required: "Please select availability"
-        },
-        status: {
-        required: "Please select the status"
-        },
-        rental_price_per_day: {
-        required: "Please enter the rental price per day",
-        number: "Please enter a valid price"
-        },
-        license_plate: {
-        required: "Please enter the license_plate",
-        },
-      },
-      errorElement: 'span',
-      errorPlacement: function (error, element) {
-        error.addClass('invalid-feedback');
-        element.closest('.form-group').append(error);
-      },
-      highlight: function (element, errorClass, validClass) {
-        $(element).addClass('is-invalid');
-      },
-      unhighlight: function (element, errorClass, validClass) {
-        $(element).removeClass('is-invalid');
-      }
+        unhighlight: function(element, errorClass, validClass) {
+          $(element).removeClass('is-invalid');
+        }
       });
     });
-    });
-  </script>
+  });
+</script>
 
 
-  <!-- ----------------------on click add more image-------------------------------- -->
-  <script>
-    let sl = 0;
-    function addmore() {
-    $(document).ready(function () {
-      $('#newImagefeild').on('click', '.deleteImageDiv', function () {
-      $(this).closest('#thisField').remove();
+<!-- ----------------------on click add more image-------------------------------- -->
+<script>
+  let sl = 0;
+
+  function addmore() {
+    $(document).ready(function() {
+      $('#newImagefeild').on('click', '.deleteImageDiv', function() {
+        $(this).closest('#thisField').remove();
       });
     });
 
@@ -258,38 +258,38 @@
       `;
     $("#newImagefeild").append(newImage);
     sl++;
-    }
-  </script>
+  }
+</script>
 
 
-  <!-- ----------------------on click add more image-------------------------------- -->
-  <script>
-    document.getElementById('imagesInputUpload').addEventListener('change', function (event) {
-        const imagesPreviewsUpload = document.getElementById('imagesPreviewsUpload');
-        imagesPreviewsUpload.innerHTML = ''; // Clear previous previews
+<!-- ----------------------on click add more image-------------------------------- -->
+<script>
+  document.getElementById('imagesInputUpload').addEventListener('change', function(event) {
+    const imagesPreviewsUpload = document.getElementById('imagesPreviewsUpload');
+    imagesPreviewsUpload.innerHTML = ''; // Clear previous previews
 
-        const filesUpload = event.target.files;
-        console.log(filesUpload.length); // Log files to console for debugging
+    const filesUpload = event.target.files;
+    console.log(filesUpload.length); // Log files to console for debugging
 
-        if (filesUpload.length) {
-            Array.from(filesUpload).forEach(file => {
-                // Optional: Validate file type (e.g., only images)
-                if (file.type.startsWith('image/')) {
-                    const reader = new FileReader();
-                    reader.onload = function (e) {
-                        const img = document.createElement('img');
-                        img.src = e.target.result;
-                        img.style.maxWidth = '150px';
-                        img.style.margin = '10px';
-                        imagesPreviewsUpload.appendChild(img);
-                    };
-                    reader.readAsDataURL(file);
-                } else {
-                    console.error('File is not an image:', file);
-                }
-            });
+    if (filesUpload.length) {
+      Array.from(filesUpload).forEach(file => {
+        // Optional: Validate file type (e.g., only images)
+        if (file.type.startsWith('image/')) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            img.style.maxWidth = '100px';
+            img.style.margin = '10px';
+            imagesPreviewsUpload.appendChild(img);
+          };
+          reader.readAsDataURL(file);
+        } else {
+          console.error('File is not an image:', file);
         }
-    });
+      });
+    }
+  });
 </script>
 <!-- ----------------------on click add more image end-------------------------------- -->
 @endpush
