@@ -50,3 +50,7 @@ Route::prefix('ajax')->group(function(){
 #Ckeditor
 Route::get('ckeditor', [CkeditorController::class, 'index']);
 Route::post('ckeditor/upload', [CkeditorController::class, 'upload'])->name('ckeditor.upload');
+
+
+#tailwind
+Route::get('/tailwind', function () { return view('tailwind'); });
