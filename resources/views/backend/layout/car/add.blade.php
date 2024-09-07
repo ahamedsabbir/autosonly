@@ -103,12 +103,11 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="imagesInputUpload" class="text-center">
-              <img src="{{ asset('default/select_image.jpg') }}" alt="upload" width="100px">
-              <br>
+            <label for="imagesInputUploadimages" class="text-center">
               <span>Select Image</span>
             </label>
-            <input type="file" name="images[]" class="d-none" id="imagesInputUpload" multiple>
+            <input type="file" name="images[]" class="dropify" id="imagesInputUploadimages" multiple>
+            <div id="preview"></div>
             @error('images')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
@@ -292,4 +291,30 @@
   });
 </script>
 <!-- ----------------------on click add more image end-------------------------------- -->
+<script>
+  $(document).ready(function() {
+    $('.dropify').dropify();
+    /* document.getElementById('imagesInputUploadimages').addEventListener('change', function(event) {
+      var files = event.target.files;
+      var preview = document.getElementById('preview');
+      preview.innerHTML = ''; // Clear previous previews
+
+      for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+          var img = document.createElement('img');
+          img.src = e.target.result;
+          img.style.maxWidth = '100px';
+          img.style.margin = '10px';
+          preview.appendChild(img);
+        };
+
+        reader.readAsDataURL(file);
+      }
+    }); */
+
+  });
+</script>
 @endpush

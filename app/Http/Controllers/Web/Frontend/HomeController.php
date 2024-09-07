@@ -50,11 +50,10 @@ class HomeController extends Controller
     }
     public function search(Request $request){
         //dd($request->location);
+        $query = Car::query();
 
         if ($request->has('available') && $request->available == "yes") {
-            $query = Car::where('available', 'yes');
-        }else{
-            $query = Car::query();
+            $query->where('available', 'yes');
         }
 
         if ($request->has('type')) {
@@ -81,7 +80,6 @@ class HomeController extends Controller
             $query->whereHas('review', function($q) use ($request) {
                 $q->where('rating', $request->review);
             });
-
         }
 
         $cars = $query->orderBy('id', 'desc')->paginate(12);
